@@ -2382,6 +2382,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@deepseek-ai/dsh-client-ui-chat@patch:@deepseek-ai/dsh-client-ui-chat@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-chat-0.1.5-rc.2.tgz#./patches/lawyer-dsh-client-ui-chat@0.1.5-rc.2.patch::locator=deepseek-harness-desktop%40workspace%3A.":
+  version: 0.1.5-rc.2
+  resolution: "@deepseek-ai/dsh-client-ui-chat@patch:@deepseek-ai/dsh-client-ui-chat@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-chat-0.1.5-rc.2.tgz%23vendor/lawyer-runtime/deepseek-ai-dsh-client-ui-chat-0.1.5-rc.2.tgz%3A%3Ahash=73326a&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/lawyer-dsh-client-ui-chat@0.1.5-rc.2.patch::version=0.1.5-rc.2&hash=e21b5d&locator=deepseek-harness-desktop%40workspace%3A."
+  dependencies:
+    "@deepseek-ai/schemastery": "npm:^3.18.2"
+  peerDependencies:
+    "@deepseek-ai/cordis": ^4.0.2
+  checksum: 10c0/263994bce06327311358b3c25b870f73bdce81629b001f05ee84d4c7d3ca4cbae87c27cafe2b239ae07bb680d1c684a1605a1a8dd7d909ca6112d332be71b75a
+  languageName: node
+  linkType: hard
+
 "@deepseek-ai/dsh-client-ui-commands@file:vendor/dsh-runtime/0.1.5-rc.1/deepseek-ai-dsh-client-ui-commands-0.1.5-rc.1.tgz::locator=deepseek-harness-desktop%40workspace%3A.":
   version: 0.1.5-rc.1
   resolution: "@deepseek-ai/dsh-client-ui-commands@file:vendor/dsh-runtime/0.1.5-rc.1/deepseek-ai-dsh-client-ui-commands-0.1.5-rc.1.tgz#vendor/dsh-runtime/0.1.5-rc.1/deepseek-ai-dsh-client-ui-commands-0.1.5-rc.1.tgz::hash=89f8bc&locator=deepseek-harness-desktop%40workspace%3A."
@@ -2419,6 +2430,17 @@ __metadata:
   peerDependencies:
     "@deepseek-ai/cordis": ^4.0.2
   checksum: 10c0/78d266e816fe98965fda75e4d48bf2e83b181ae6312dd92bdcf57ff09356c73bc7d3016508e3a0544b7e842ae33bc061f14652812a58758c075703df49d1dfb0
+  languageName: node
+  linkType: hard
+
+"@deepseek-ai/dsh-client-ui-conversation@patch:@deepseek-ai/dsh-client-ui-conversation@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-conversation-0.1.5-rc.2.tgz#./patches/lawyer-dsh-client-ui-conversation@0.1.5-rc.2.patch::locator=deepseek-harness-desktop%40workspace%3A.":
+  version: 0.1.5-rc.2
+  resolution: "@deepseek-ai/dsh-client-ui-conversation@patch:@deepseek-ai/dsh-client-ui-conversation@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-conversation-0.1.5-rc.2.tgz%23vendor/lawyer-runtime/deepseek-ai-dsh-client-ui-conversation-0.1.5-rc.2.tgz%3A%3Ahash=91a2fa&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/lawyer-dsh-client-ui-conversation@0.1.5-rc.2.patch::version=0.1.5-rc.2&hash=3fc7ec&locator=deepseek-harness-desktop%40workspace%3A."
+  dependencies:
+    "@deepseek-ai/schemastery": "npm:^3.18.2"
+  peerDependencies:
+    "@deepseek-ai/cordis": ^4.0.2
+  checksum: 10c0/769ded7e2a5fe57f90f17cfec821912eac6e73cd9717ff7cd650c8773adb16bb45e06c26432de0fad98bcb0765a5d47e3131792ccf12ed45f8162dd9684ead7c
   languageName: node
   linkType: hard
 

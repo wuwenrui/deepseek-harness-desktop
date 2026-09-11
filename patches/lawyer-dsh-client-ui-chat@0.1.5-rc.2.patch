@@ -1,0 +1,41 @@
+diff --git a/lib/client.js b/lib/client.js
+index f56c076..5785b64 100644
+--- a/lib/client.js
++++ b/lib/client.js
+@@ -2052,7 +2052,7 @@ window.__ModuleLoader__.load({
+ 				className: ChatView_module_css_default.turnStatus,
+ 				role: "status",
+ 				"aria-live": "polite",
+-				children: [t("chat.deepDiving"), showClock && (0, react_jsx_runtime.jsx)("span", {
++				children: [t(["chat.deepDiving","chat.slogan.evidence","chat.slogan.chain","chat.slogan.issues","chat.slogan.drafting","chat.slogan.simplify"][Math.floor(elapsedMs / 4000) % 6]), showClock && (0, react_jsx_runtime.jsx)("span", {
+ 					className: ChatView_module_css_default.turnStatusClock,
+ 					"aria-hidden": true,
+ 					children: formatRunDuration(elapsedMs, t)
+@@ -2638,7 +2638,12 @@ window.__ModuleLoader__.load({
+ 			"chat.loadError": "历史加载失败：{message}（{code}）",
+ 			"chat.loadOlder": "加载更早",
+ 			"chat.toBottom": "回到底部",
+-			"chat.deepDiving": "深度求索中...",
++			"chat.deepDiving": "正在梳理案情脉络…",
++			"chat.slogan.evidence": "正在核对法条与判例…",
++			"chat.slogan.chain": "正在比对证据链…",
++			"chat.slogan.issues": "正在推演争点与对策…",
++			"chat.slogan.drafting": "正在打磨文书表述…",
++			"chat.slogan.simplify": "正在把复杂的事办简单…",
+ 			"chat.turnNavigation.label": "轮次导航",
+ 			"chat.turnNavigation.jump": "跳转到第 {turn} 轮",
+ 			"chat.turnNavigation.jumpLoad": "加载并跳转到第 {turn} 轮",
+@@ -2744,7 +2749,12 @@ window.__ModuleLoader__.load({
+ 			"chat.loadError": "Failed to load history: {message} ({code})",
+ 			"chat.loadOlder": "Load earlier",
+ 			"chat.toBottom": "Back to bottom",
+-			"chat.deepDiving": "Deep diving...",
++			"chat.deepDiving": "Mapping the case…",
++			"chat.slogan.evidence": "Checking statutes and precedents…",
++			"chat.slogan.chain": "Cross-checking the evidence chain…",
++			"chat.slogan.issues": "Weighing the disputed issues…",
++			"chat.slogan.drafting": "Polishing the wording…",
++			"chat.slogan.simplify": "Making the complex simple…",
+ 			"chat.turnNavigation.label": "Turn navigation",
+ 			"chat.turnNavigation.jump": "Jump to turn {turn}",
+ 			"chat.turnNavigation.jumpLoad": "Load and jump to turn {turn}",

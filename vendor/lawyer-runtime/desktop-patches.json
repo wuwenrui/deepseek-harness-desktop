@@ -7,5 +7,7 @@
   "@deepseek-ai/dsh-host-directory-picker-browse": "patches/lawyer-dsh-host-directory-picker-browse@0.1.5-rc.2.patch",
   "@deepseek-ai/dsh-web-app": "patches/lawyer-dsh-web-app@0.1.5-rc.2.patch",
   "@deepseek-ai/dsh": "patches/lawyer-dsh@0.1.5-rc.2.patch",
-  "@deepseek-ai/dsh-client-ui-primitives": "patches/lawyer-dsh-client-ui-primitives@0.1.5-rc.2.patch"
+  "@deepseek-ai/dsh-client-ui-primitives": "patches/lawyer-dsh-client-ui-primitives@0.1.5-rc.2.patch",
+  "@deepseek-ai/dsh-client-ui-conversation": "patches/lawyer-dsh-client-ui-conversation@0.1.5-rc.2.patch",
+  "@deepseek-ai/dsh-client-ui-chat": "patches/lawyer-dsh-client-ui-chat@0.1.5-rc.2.patch"
 }
