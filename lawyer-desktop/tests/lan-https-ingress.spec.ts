@@ -21,7 +21,7 @@ interface HttpsResult {
 }
 
 beforeAll(async () => {
-  const ca = await generate([{ name: 'commonName', value: 'DSH Desktop test root' }], {
+  const ca = await generate([{ name: 'commonName', value: 'LawyerDesk test root' }], {
     algorithm: 'sha256',
     keyType: 'ec',
     extensions: [

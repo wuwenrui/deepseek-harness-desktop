@@ -79,7 +79,7 @@ describe('DesktopDialogWindow', () => {
     const parent = new electron.BrowserWindow({})
     const dialog = new DesktopDialogWindow({
       type: 'question',
-      title: 'Restart DSH Desktop',
+      title: 'Restart LawyerDesk',
       message: 'Restart now?',
       detail: 'Running operations may be interrupted.',
       buttons: ['Restart', 'Cancel'],

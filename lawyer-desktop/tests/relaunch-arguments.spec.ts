@@ -11,7 +11,7 @@ import {
 
 describe('Desktop relaunch arguments', () => {
   const argv = [
-    '/Applications/DSH Desktop.app/Contents/MacOS/DSH Desktop',
+    '/Applications/LawyerDesk.app/Contents/MacOS/LawyerDesk',
     'desktop-main.cjs',
     '--profile=work',
     DESKTOP_RECOVERY_MODE_ARGUMENT,
