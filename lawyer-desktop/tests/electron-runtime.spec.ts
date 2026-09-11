@@ -451,7 +451,7 @@ describe('Electron desktop runtime', () => {
     expect(electron.templateIcon.setTemplateImage).toHaveBeenCalledWith(true)
     expect(electron.trays[0]?.image).toBe(electron.templateIcon)
     expect(electron.menuTemplates[0]).toEqual(expect.arrayContaining([
-      expect.objectContaining({ label: 'Mode: Compatibility Mode', enabled: true }),
+      expect.objectContaining({ label: 'Mode: Compatibility Mode', enabled: false }),
     ]))
 
     const titleListener = electron.browserWindowOn.mock.calls.find(([event]) => event === 'page-title-updated')?.[1]
@@ -1774,7 +1774,8 @@ describe('Electron desktop runtime', () => {
       const menu = electron.menuTemplates.at(-1) as Item[]
       const selectors = menu.filter(item => item.label === title)
       expect(selectors).toHaveLength(1)
-      expect(selectors[0]?.enabled).toBe(platform !== 'linux')
+      // 受管产品只保留一种原生呈现：模式项可见但不可切换。
+      expect(selectors[0]?.enabled).toBe(false)
       expect(selectors[0]?.click).toBeUndefined()
       const submenu = selectors[0]?.submenu
       expect(submenu).toHaveLength(3)
@@ -1785,7 +1786,7 @@ describe('Electron desktop runtime', () => {
       for (const [index, target] of modes.entries()) {
         const item = submenu?.[index]
         expect(item).toEqual(expect.objectContaining({
-          type: 'radio', checked: target === mode, enabled: platform !== 'linux',
+          type: 'radio', checked: target === mode, enabled: false,
         }))
         requestModeChange.mockClear()
         item?.click?.()
@@ -2645,7 +2646,7 @@ describe('Electron desktop runtime', () => {
       vibrancy: 'sidebar',
     }))
     expect(electron.menuTemplates[0]).toEqual(expect.arrayContaining([
-      expect.objectContaining({ label: 'Mode: Enhanced Mode', enabled: true }),
+      expect.objectContaining({ label: 'Mode: Enhanced Mode', enabled: false }),
     ]))
 
     runtime.setThemeSource('system')
@@ -2707,7 +2708,7 @@ describe('Electron desktop runtime', () => {
     expect(electron.browserWindowOptions[0]).not.toHaveProperty('transparent')
     expect(electron.browserWindowOptions[0]).not.toHaveProperty('backgroundMaterial')
     expect(electron.menuTemplates[0]).toEqual(expect.arrayContaining([
-      expect.objectContaining({ label: 'Mode: Extended Window', enabled: true }),
+      expect.objectContaining({ label: 'Mode: Extended Window', enabled: false }),
     ]))
 
     await release()
