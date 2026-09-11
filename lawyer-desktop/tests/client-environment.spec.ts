@@ -200,7 +200,7 @@ describe('advanced desktop layout', () => {
       reflect: {
         get: () => undefined,
         provide: (name: string, value: unknown) => {
-          expect(name).toBe('layout')
+          expect(name).toBe('desktopLayout')
           expect(value).toBeInstanceOf(DesktopLayoutState)
           return () => { disposed = true }
         },

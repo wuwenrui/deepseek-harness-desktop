@@ -74,8 +74,8 @@ describe('installDesktopLayout', () => {
     const layout = { mark: 'state' }
 
     installDesktopLayout(ctx as never, layout as never)
-    expect(ctx.reflect.get).toHaveBeenCalledWith('layout', false)
-    expect(ctx.reflect.provide).toHaveBeenCalledWith('layout', layout)
+    expect(ctx.reflect.get).toHaveBeenCalledWith('desktopLayout', false)
+    expect(ctx.reflect.provide).toHaveBeenCalledWith('desktopLayout', layout)
 
     // The disposal effect must be owned by the fiber so a later unload frees
     // the registration for whoever applies next; the factory result is what

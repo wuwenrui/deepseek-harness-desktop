@@ -1,0 +1,14 @@
+diff --git a/lib/plugin-rZJSs_Cl.js b/lib/plugin-rZJSs_Cl.js
+index ae38c4f..899bc87 100644
+--- a/lib/plugin-rZJSs_Cl.js
++++ b/lib/plugin-rZJSs_Cl.js
+@@ -109,7 +109,8 @@ function runPlugin(profile, args) {
+ 	const result = spawnSync("pnpm", args.map((argument) => anchorPathSpec(argument, process.cwd())), {
+ 		cwd: dir,
+ 		stdio: "inherit",
+-		shell: process.platform === "win32"
++		shell: process.platform === "win32",
++		windowsHide: true
+ 	});
+ 	if (result.error !== void 0) {
+ 		if (result.error.code === "ENOENT") {

@@ -8,7 +8,7 @@ const vendor=join(root,'vendor/lawyer-runtime')
 const manifest=JSON.parse(readFileSync(join(vendor,'manifest.json'),'utf8'))
 const packageJson=JSON.parse(readFileSync(join(root,'package.json'),'utf8'))
 const patches=JSON.parse(readFileSync(join(vendor,'desktop-patches.json'),'utf8'))
-if(manifest.baseCommit!=='b0a7d2ce3b4c19d7452e364b2d7acbfa87e707ed'||manifest.buildProfile!=='official')throw new Error('unexpected managed runtime baseline')
+if(manifest.baseCommit!=='b132ba6e5ac73af67cd6eb6aa4438dd35e65a245'||manifest.buildProfile!=='official')throw new Error('unexpected managed runtime baseline')
 if(!manifest.packages.some(item=>item.name==='@deepseek-ai/dsh-product-policy'))throw new Error('product policy package is absent')
 for(const entry of manifest.packages){
  const bytes=readFileSync(join(vendor,entry.filename))
