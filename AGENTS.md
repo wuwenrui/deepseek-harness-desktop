@@ -1,3 +1,8 @@
+<!-- 产品线入口 · 由我们维护：与上游同名文件合并冲突时，两边都保留即可 -->
+> **【Harness 法律产品线 · 桌面外壳】** 本仓库是这条产品线的桌面外壳（我们 fork 自 `anywhere-labs/dsh-desktop`）。
+> 上游合并、冲突怎么解、门禁跑什么、版本怎么联动，统一见 **[`../docs/harness-maintenance.md`](../docs/harness-maintenance.md)**——动本仓库前先读那份。
+> 我们的受管法律变体在 `lawyer-desktop/`，它从上游的 `dsh-plugin-desktop-beta` 派生而来；随附运行时是 `vendor/lawyer-runtime/`，桌面兼容补丁是 `patches/lawyer-*.patch`。
+
 # DSH Desktop repository rules
 
 This repository owns the desktop product around an unmodified DeepSeek Harness checkout.
