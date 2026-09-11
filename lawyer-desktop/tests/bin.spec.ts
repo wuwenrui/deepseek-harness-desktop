@@ -32,7 +32,7 @@ describe('desktop npm launcher', () => {
   })
 
   it('names the installed product and selected profile behavior', () => {
-    expect(DESKTOP_CLI_HELP).toContain('LawyerCopilot')
+    expect(DESKTOP_CLI_HELP).toContain('LawyerDesk')
     expect(DESKTOP_CLI_HELP).toContain('Usage: lawyer-dsh-desktop')
     expect(DESKTOP_CLI_HELP).toContain('selected Web-capable profile')
     expect(DESKTOP_CLI_HELP).toContain('--export-diagnostics')
@@ -40,9 +40,9 @@ describe('desktop npm launcher', () => {
 
   it('resolves the packaged Desktop user-data directory without Electron', () => {
     expect(defaultDesktopUserDataDirectory('win32', { APPDATA: 'C:\\Users\\Example\\AppData\\Roaming' }, 'ignored'))
-      .toBe('C:\\Users\\Example\\AppData\\Roaming\\LawyerCopilot')
+      .toBe('C:\\Users\\Example\\AppData\\Roaming\\LawyerDesk')
     expect(defaultDesktopUserDataDirectory('darwin', {}, '/Users/example'))
-      .toBe('/Users/example/Library/Application Support/LawyerCopilot')
+      .toBe('/Users/example/Library/Application Support/LawyerDesk')
   })
 
   it('exports diagnostics without launching Electron', async () => {

@@ -1,4 +1,4 @@
-/** Managed LawyerCopilot bootstrap over Anywhere Labs' Electron shell and DSH Web carrier. */
+/** Managed LawyerDesk bootstrap over Anywhere Labs' Electron shell and DSH Web carrier. */
 import { app, dialog } from 'electron'
 import { Context } from '@deepseek-ai/cordis'
 import { boot, composeEntries, healProfilesModuleFallback, loadLayeredEnv, loadOptionalPatches, loadOverlayPatches, loadProfile } from '@deepseek-ai/dsh-app-boot'

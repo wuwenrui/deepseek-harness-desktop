@@ -1,4 +1,4 @@
-/** Headless product artifact checks for the managed LawyerCopilot variant. */
+/** Headless product artifact checks for the managed LawyerDesk variant. */
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { createHash } from 'node:crypto'
@@ -6,7 +6,7 @@ import { createRequire } from 'node:module'
 const require=createRequire(import.meta.url)
 const asar=require('@electron/asar')
 export default async function verify(context) {
-  const resources=context.electronPlatformName==='darwin' ? join(context.appOutDir,'LawyerCopilot.app','Contents','Resources') : join(context.appOutDir,'resources')
+  const resources=context.electronPlatformName==='darwin' ? join(context.appOutDir,'LawyerDesk.app','Contents','Resources') : join(context.appOutDir,'resources')
   const archive=join(resources,'app.asar'), physical=archive+'.unpacked'
   if(!existsSync(archive))throw new Error('packaged app.asar missing')
   const pkg=JSON.parse(asar.extractFile(archive,'package.json'))
@@ -24,5 +24,5 @@ export default async function verify(context) {
   }
   const files=asar.listPackage(archive)
   if(files.some(file=>/\/(?:\.secrets|\.credentials\.yaml|lawyer-market-signing\.pem)(?:\/|$)/.test(file)))throw new Error('private data must not be packaged')
-  console.log('LawyerCopilot packaged entry, managed runtime, physical Node files and exact seed artifacts verified')
+  console.log('LawyerDesk packaged entry, managed runtime, physical Node files and exact seed artifacts verified')
 }

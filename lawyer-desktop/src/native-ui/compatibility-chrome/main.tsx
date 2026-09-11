@@ -17,8 +17,8 @@ function Chrome() {
   const chinese = state?.locale !== 'en'
   return <header className="dshDesktopFrameTitlebar" data-platform={state?.platform} data-material="off">
     <span className="lawyerDesktopSeal">律</span>
-    <span className="lawyerDesktopTitle">{chinese ? '律师 AI 工作台' : 'LawyerCopilot'}</span>
-    <span className="lawyerDesktopCaption">LawyerCopilot</span>
+    <span className="lawyerDesktopTitle">{chinese ? '律师 AI 工作台' : 'LawyerDesk'}</span>
+    <span className="lawyerDesktopCaption">LawyerDesk</span>
     <button type="button" className="lawyerDesktopRestart" onClick={() => { void window.desktopChrome.invoke('restart').catch(() => setFailed(true)) }}>{chinese ? '重启工作台' : 'Restart'}</button>
     {failed && <span role="alert">{chinese ? '操作未完成' : 'Operation failed'}</span>}
   </header>

@@ -60,7 +60,7 @@ function context(
     ...(arch === undefined ? {} : { arch }),
     packager: {
       ...(executableName === undefined ? {} : { executableName }),
-      appInfo: { productFilename: 'LawyerCopilot' },
+      appInfo: { productFilename: 'LawyerDesk' },
     },
   }
 }
@@ -293,13 +293,13 @@ describe('packaged desktop runtime verification', () => {
   it.each([
     [
       'darwin',
-      join('/build', 'LawyerCopilot.app', 'Contents', 'Resources', 'app.asar'),
-      join('/build', 'LawyerCopilot.app', 'Contents', 'MacOS', 'LawyerCopilot'),
+      join('/build', 'LawyerDesk.app', 'Contents', 'Resources', 'app.asar'),
+      join('/build', 'LawyerDesk.app', 'Contents', 'MacOS', 'LawyerDesk'),
     ],
     [
       'win32',
       join('/build', 'resources', 'app.asar'),
-      join('/build', 'LawyerCopilot.exe'),
+      join('/build', 'LawyerDesk.exe'),
     ],
   ])('inspects the %s selective ASAR layout', (platform, expectedPath, expectedExecutable) => {
     const runtimeContext = context('/build', platform)

@@ -3,13 +3,13 @@ export const DESKTOP_RELEASE_IDENTITIES = Object.freeze({
   stable: Object.freeze({
     releaseChannel: 'stable' as const,
     packageName: 'dsh-plugin-desktop',
-    productName: 'LawyerCopilot Stable',
+    productName: 'LawyerDesk Stable',
     appId: 'work.codingrui.lawyer.desktop.stable',
   }),
   beta: Object.freeze({
     releaseChannel: 'beta' as const,
     packageName: 'lawyer-dsh-desktop',
-    productName: 'LawyerCopilot',
+    productName: 'LawyerDesk',
     appId: 'work.codingrui.lawyer.desktop',
   }),
 })

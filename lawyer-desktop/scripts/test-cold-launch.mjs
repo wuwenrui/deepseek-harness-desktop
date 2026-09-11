@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..')
-const exe=join(root,'dist/mac-arm64/LawyerCopilot.app/Contents/MacOS/LawyerCopilot')
+const exe=join(root,'dist/mac-arm64/LawyerDesk.app/Contents/MacOS/LawyerDesk')
 const home=mkdtempSync(join(tmpdir(),'lawyer-native-noargv-'))
 const env={...process.env,LAWYER_DESKTOP_HOME:home}
 for(const key of ['ELECTRON_RUN_AS_NODE','NODE_OPTIONS','NODE_PATH'])delete env[key]

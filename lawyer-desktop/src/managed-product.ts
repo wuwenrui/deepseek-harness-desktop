@@ -11,7 +11,7 @@ import { recoverManagedProfile } from '@lawyer-dsh/market/managed-engine'
 import type { Command } from '@lawyer-dsh/market/managed-process'
 
 const require = createRequire(import.meta.url)
-export const PRODUCT_NAME = 'LawyerCopilot'
+export const PRODUCT_NAME = 'LawyerDesk'
 export const PRODUCT_PROFILE = 'lawyer'
 export const PRODUCT_BUNDLES = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', '@lawyer-dsh/lawyer-platform', '@lawyer-dsh/lawyer-brand', '@lawyer-dsh/market'] as const
 

@@ -326,7 +326,7 @@
   },
   "build": {
     "appId": "work.codingrui.lawyer.desktop",
-    "productName": "LawyerCopilot",
+    "productName": "LawyerDesk",
     "asar": {
       "smartUnpack": true
     },
@@ -364,7 +364,7 @@
         "package.json",
         "lib/managed-cli.js"
       ],
-      "artifactName": "LawyerCopilot-${version}-${arch}.${ext}",
+      "artifactName": "LawyerDesk-${version}-${arch}.${ext}",
       "target": [
         "dir"
       ],
@@ -401,7 +401,7 @@
           ]
         }
       ],
-      "artifactName": "LawyerCopilot-${version}-${arch}-Portable.${ext}",
+      "artifactName": "LawyerDesk-${version}-${arch}-Portable.${ext}",
       "icon": "build/app-icon.png"
     },
     "nsis": {
@@ -414,9 +414,9 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "differentialPackage": false,
-      "shortcutName": "LawyerCopilot",
+      "shortcutName": "LawyerDesk",
       "useZip": false,
-      "artifactName": "LawyerCopilot-${version}-${arch}-Setup.${ext}"
+      "artifactName": "LawyerDesk-${version}-${arch}-Setup.${ext}"
     },
     "linux": {
       "asarUnpack": [

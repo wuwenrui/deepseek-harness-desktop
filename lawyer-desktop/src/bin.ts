@@ -17,7 +17,7 @@ export type DesktopCliAction = 'export-diagnostics' | 'help' | 'version' | 'laun
 /** Human-readable launcher help. */
 export const DESKTOP_CLI_HELP = `Usage: lawyer-dsh-desktop [options]
 
-Launch LawyerCopilot with the selected Web-capable profile.
+Launch LawyerDesk with the selected Web-capable profile.
 
 Options:
   --export-diagnostics  export logs and crash evidence without launching the app

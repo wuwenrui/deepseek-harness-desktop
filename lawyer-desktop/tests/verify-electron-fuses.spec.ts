@@ -20,7 +20,7 @@ function result(
     readonly key: string
   }[],
   configuration: ElectronArtifactBuildResult['configuration'] = {
-    productName: 'LawyerCopilot',
+    productName: 'LawyerDesk',
   },
 ): ElectronArtifactBuildResult {
   return {
@@ -49,9 +49,9 @@ describe('final Electron fuse verification', () => {
   it('maps only requested platform and architecture keys to complete runtime contexts', () => {
     const expected = [
       join('/build', 'linux-unpacked', 'lawyer-dsh-desktop'),
-      join('/build', 'mac-universal', 'LawyerCopilot.app', 'Contents', 'MacOS', 'LawyerCopilot'),
-      join('/build', 'win-unpacked', 'LawyerCopilot.exe'),
-      join('/build', 'win-arm64-unpacked', 'LawyerCopilot.exe'),
+      join('/build', 'mac-universal', 'LawyerDesk.app', 'Contents', 'MacOS', 'LawyerDesk'),
+      join('/build', 'win-unpacked', 'LawyerDesk.exe'),
+      join('/build', 'win-arm64-unpacked', 'LawyerDesk.exe'),
     ].sort()
 
     expect(resolveFinalPackagedRuntimeContexts(
@@ -68,33 +68,33 @@ describe('final Electron fuse verification', () => {
         electronPlatformName: 'linux',
         packager: {
           executableName: 'lawyer-dsh-desktop',
-          appInfo: { productFilename: 'LawyerCopilot' },
+          appInfo: { productFilename: 'LawyerDesk' },
         },
       },
       {
         appOutDir: join('/build', 'mac-universal'),
         arch: 4,
         electronPlatformName: 'darwin',
-        packager: { appInfo: { productFilename: 'LawyerCopilot' } },
+        packager: { appInfo: { productFilename: 'LawyerDesk' } },
       },
       {
         appOutDir: join('/build', 'win-arm64-unpacked'),
         arch: 3,
         electronPlatformName: 'win32',
-        packager: { appInfo: { productFilename: 'LawyerCopilot' } },
+        packager: { appInfo: { productFilename: 'LawyerDesk' } },
       },
       {
         appOutDir: join('/build', 'win-unpacked'),
         arch: 1,
         electronPlatformName: 'win32',
-        packager: { appInfo: { productFilename: 'LawyerCopilot' } },
+        packager: { appInfo: { productFilename: 'LawyerDesk' } },
       },
     ])
   })
 
   it('honors Linux executableName and recovers a configured suffixless architecture', () => {
     const configured = result([{ key: 'linux', archs: [Arch.arm64] }], {
-      productName: 'LawyerCopilot',
+      productName: 'LawyerDesk',
       linux: { defaultArch: 'arm64', executableName: 'dsh-desktop' },
     })
     const executable = join('/build', 'linux-unpacked', 'dsh-desktop')
@@ -143,8 +143,8 @@ describe('final Electron fuse verification', () => {
   })
 
   it('ignores a stale sibling architecture from an earlier build', () => {
-    const expected = join('/build', 'win-unpacked', 'LawyerCopilot.exe')
-    const stale = join('/build', 'win-arm64-unpacked', 'LawyerCopilot.exe')
+    const expected = join('/build', 'win-unpacked', 'LawyerDesk.exe')
+    const stale = join('/build', 'win-arm64-unpacked', 'LawyerDesk.exe')
     const exists = vi.fn((filename: string) => filename === expected || filename === stale)
 
     expect(resolveFinalPackagedRuntimeContexts(
@@ -160,19 +160,19 @@ describe('final Electron fuse verification', () => {
   })
 
   it('fails when one requested architecture is missing even if a sibling exists', () => {
-    const x64Executable = join('/build', 'win-unpacked', 'LawyerCopilot.exe')
+    const x64Executable = join('/build', 'win-unpacked', 'LawyerDesk.exe')
 
     expect(() => resolveFinalPackagedRuntimeContexts(
       result([{ key: 'win', archs: [Arch.x64, Arch.arm64] }]),
       filename => filename === x64Executable,
-    )).toThrow('win/arm64 at /build/win-arm64-unpacked/LawyerCopilot.exe')
+    )).toThrow('win/arm64 at /build/win-arm64-unpacked/LawyerDesk.exe')
   })
 
   it('resolves a real target-name map through the target archs retained by NSIS', () => {
     const platform = { buildConfigurationKey: 'win' }
     const built = {
       outDir: '/build',
-      configuration: { productName: 'LawyerCopilot' },
+      configuration: { productName: 'LawyerDesk' },
       platformToTargets: new Map([[platform, new Map([
         ['nsis', { archs: new Map([
           [Arch.x64, '/build/win-unpacked'],
@@ -195,7 +195,7 @@ describe('final Electron fuse verification', () => {
     ])]])
     const built = {
       outDir: '/build',
-      configuration: { productName: 'LawyerCopilot' },
+      configuration: { productName: 'LawyerDesk' },
       platformToTargets: new Map([[platform, new Map([
         ['dmg', { packager: { packagerOptions: { targets: requestedTargets } } }],
       ])]]),
@@ -203,10 +203,10 @@ describe('final Electron fuse verification', () => {
     const universalExecutable = join(
       '/build',
       'mac-universal',
-      'LawyerCopilot.app',
+      'LawyerDesk.app',
       'Contents',
       'MacOS',
-      'LawyerCopilot',
+      'LawyerDesk',
     )
     const exists = vi.fn((filename: string) => filename === universalExecutable)
 
@@ -219,8 +219,8 @@ describe('final Electron fuse verification', () => {
 
   it('checks every requested final executable after all artifact builds', async () => {
     const executables = [
-      join('/build', 'mac-arm64', 'LawyerCopilot.app', 'Contents', 'MacOS', 'LawyerCopilot'),
-      join('/build', 'mac', 'LawyerCopilot.app', 'Contents', 'MacOS', 'LawyerCopilot'),
+      join('/build', 'mac-arm64', 'LawyerDesk.app', 'Contents', 'MacOS', 'LawyerDesk'),
+      join('/build', 'mac', 'LawyerDesk.app', 'Contents', 'MacOS', 'LawyerDesk'),
     ]
     const events: string[] = []
     const read = vi.fn<ElectronFuseReader>(async (executable) => {
@@ -257,14 +257,14 @@ describe('final Electron fuse verification', () => {
   ])('fails loud when required fuse %s is not enabled', async (option, name) => {
     const read: ElectronFuseReader = async () => fuseWire({ [option]: FuseState.DISABLE })
 
-    await expect(verifyElectronExecutableFuses('/build/LawyerCopilot.exe', read))
+    await expect(verifyElectronExecutableFuses('/build/LawyerDesk.exe', read))
       .rejects.toThrow(`${name}=DISABLE`)
   })
 
   it('wraps an unreadable final executable with its resolved path', async () => {
     const read: ElectronFuseReader = async () => { throw new Error('missing sentinel') }
 
-    await expect(verifyElectronExecutableFuses('/build/LawyerCopilot.exe', read))
-      .rejects.toThrow('/build/LawyerCopilot.exe')
+    await expect(verifyElectronExecutableFuses('/build/LawyerDesk.exe', read))
+      .rejects.toThrow('/build/LawyerDesk.exe')
   })
 })

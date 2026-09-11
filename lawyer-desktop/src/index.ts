@@ -480,7 +480,7 @@ export function apply(ctx: Context, config: Config): void {
         authenticationUrl: ctx.connection.authenticatedUrl(new URL(url).origin),
         rendererAccessHeader: browserAccess.rendererHeader,
         productName: DESKTOP_PRODUCT_NAME,
-        windowTitle: '律师 AI 工作台 · LawyerCopilot',
+        windowTitle: '律师 AI 工作台 · LawyerDesk',
         iconPath,
         trayIcons,
         readLocalePreference: () => {

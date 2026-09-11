@@ -82,7 +82,7 @@ describe('desktop update installer download', () => {
   it('pins a Beta artifact request to its channel and target version', async () => {
     const directory = await temporaryDirectory()
     const artifact = dmgArtifact()
-    const destination = join(directory, 'LawyerCopilot-2.0.6-beta.1-mac.dmg')
+    const destination = join(directory, 'LawyerDesk-2.0.6-beta.1-mac.dmg')
     const result = await downloadDesktopUpdate({
       platform: 'darwin',
       version: '2.0.6-beta.1',
@@ -100,7 +100,7 @@ describe('desktop update installer download', () => {
     })
     expect(result).toBe(destination)
     expect(desktopUpdateFilename('darwin', '2.0.6-beta.1', 'beta'))
-      .toBe('LawyerCopilot-2.0.6-beta.1-mac.dmg')
+      .toBe('LawyerDesk-2.0.6-beta.1-mac.dmg')
   })
 
   it('accepts a Beta artifact without response identity headers', async () => {
@@ -109,10 +109,10 @@ describe('desktop update installer download', () => {
       platform: 'darwin',
       version: '2.0.6-beta.1',
       channel: 'beta',
-      destinationPath: join(directory, 'LawyerCopilot-2.0.6-beta.1-mac.dmg'),
+      destinationPath: join(directory, 'LawyerDesk-2.0.6-beta.1-mac.dmg'),
       request: async () => chunkedResponse([dmgArtifact()]),
     })
-    expect(result).toBe(join(directory, 'LawyerCopilot-2.0.6-beta.1-mac.dmg'))
+    expect(result).toBe(join(directory, 'LawyerDesk-2.0.6-beta.1-mac.dmg'))
   })
 
   it('streams a macOS DMG from only the fixed endpoint and atomically completes it', async () => {

@@ -102,7 +102,7 @@ describe('published package surface', () => {
   it('sets a distinct Beta process identity before taking the single-instance lock', () => {
     expect(productIdentity).toContain("packageName: 'lawyer-dsh-desktop'")
     expect(productIdentity).toContain("packageName: 'dsh-plugin-desktop'")
-    expect(productIdentity).toContain("productName: 'LawyerCopilot'")
+    expect(productIdentity).toContain("productName: 'LawyerDesk'")
     expect(productIdentity).toContain("appId: 'work.codingrui.lawyer.desktop'")
     expect(productIdentity).toContain('DESKTOP_PRODUCT_IDENTITY = DESKTOP_RELEASE_IDENTITIES.beta')
     expect(productIdentity).toContain('OTHER_DESKTOP_PRODUCT_IDENTITY = DESKTOP_RELEASE_IDENTITIES.stable')
@@ -847,7 +847,7 @@ describe('published package surface', () => {
     })
     expect(manifest.bin).not.toHaveProperty('dsh-desktop')
     expect(manifest.bin).not.toHaveProperty('dsh-plugin-desktop')
-    expect(manifest.build?.productName).toBe('LawyerCopilot')
+    expect(manifest.build?.productName).toBe('LawyerDesk')
     expect(manifest.build?.appId).toBe('work.codingrui.lawyer.desktop')
     expect(manifest.build?.asar).toEqual({ smartUnpack: true })
     expect(manifest.build).not.toHaveProperty('asarUnpack')
@@ -892,7 +892,7 @@ describe('published package surface', () => {
       '!node_modules/fs-ext/build/**',
     ])
     expect(manifest.build?.mac?.icon).toBe('build/app-icon-mac.png')
-    expect(manifest.build?.mac?.artifactName).toBe('LawyerCopilot-${version}-${arch}.${ext}')
+    expect(manifest.build?.mac?.artifactName).toBe('LawyerDesk-${version}-${arch}.${ext}')
     expect(manifest.build?.mac?.mergeASARs).toBe(false)
     expect(manifest.build?.mac?.signIgnore).toEqual(['\\.(?:pak|dat|wasm)$'])
     expect(manifest.build?.win?.icon).toBe('build/app-icon.png')
@@ -900,7 +900,7 @@ describe('published package surface', () => {
       target: 'nsis',
       arch: ['x64'],
     }])
-    expect(manifest.build?.win?.artifactName).toBe('LawyerCopilot-${version}-${arch}-Portable.${ext}')
+    expect(manifest.build?.win?.artifactName).toBe('LawyerDesk-${version}-${arch}-Portable.${ext}')
     expect(manifest.build?.nsis).toEqual({
       include: 'installer.nsh',
       license: 'THIRD_PARTY_NOTICES.md',
@@ -911,9 +911,9 @@ describe('published package surface', () => {
       createDesktopShortcut: true,
       createStartMenuShortcut: true,
       differentialPackage: false,
-      shortcutName: 'LawyerCopilot',
+      shortcutName: 'LawyerDesk',
       useZip: false,
-      artifactName: 'LawyerCopilot-${version}-${arch}-Setup.${ext}',
+      artifactName: 'LawyerDesk-${version}-${arch}-Setup.${ext}',
     })
     expect(manifest.build?.linux?.icon).toBe('build/app-icon.png')
   })

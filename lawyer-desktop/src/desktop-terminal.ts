@@ -636,7 +636,7 @@ function windowsLaunchBroker(
   return [
     '@echo off',
     'setlocal EnableDelayedExpansion',
-    `start "LawyerCopilot" /D "!${WINDOWS_PROFILE_DIRECTORY}!" ${target}`,
+    `start "LawyerDesk" /D "!${WINDOWS_PROFILE_DIRECTORY}!" ${target}`,
     'exit /b %errorlevel%',
     '',
   ].join('\r\n')

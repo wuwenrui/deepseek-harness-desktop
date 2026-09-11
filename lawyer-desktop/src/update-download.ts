@@ -180,7 +180,7 @@ export function desktopUpdateFilename(
   validatedVersion(version, channel)
   const extension = platform === 'darwin' ? 'dmg' : 'exe'
   const platformName = platform === 'darwin' ? 'mac' : 'windows'
-  const product = channel === 'beta' ? 'LawyerCopilot' : 'DSH-Desktop'
+  const product = channel === 'beta' ? 'LawyerDesk' : 'DSH-Desktop'
   return `${product}-${version}-${platformName}.${extension}`
 }
 

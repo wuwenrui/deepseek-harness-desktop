@@ -20,9 +20,9 @@ function fixture(version = '2.0.0'): { readonly root: string; readonly portable:
   temporaryRoots.push(root)
   const dist = join(root, 'dist')
   mkdirSync(dist, { recursive: true })
-  const portable = join(dist, `LawyerCopilot-${version}-x64-Portable.zip`)
+  const portable = join(dist, `LawyerDesk-${version}-x64-Portable.zip`)
   const archive = new AdmZip()
-  archive.addFile('LawyerCopilot.exe', portableExecutable())
+  archive.addFile('LawyerDesk.exe', portableExecutable())
   archive.addFile('resources/app.asar', Buffer.from('asar'))
   archive.writeZip(portable)
   return { root, portable }
@@ -43,7 +43,7 @@ describe('Windows portable artifact verification', () => {
     const value = fixture('1.9.0')
 
     expect(() => verifyWindowsPortable({ desktopRoot: value.root, version: '2.0.0' }))
-      .toThrow('LawyerCopilot-2.0.0-x64-Portable.zip')
+      .toThrow('LawyerDesk-2.0.0-x64-Portable.zip')
   })
 
   it('rejects an application entry without a Windows PE header', () => {
@@ -51,7 +51,7 @@ describe('Windows portable artifact verification', () => {
     const invalid = portableExecutable()
     invalid.write('NO', 0, 'ascii')
     const archive = new AdmZip()
-    archive.addFile('LawyerCopilot.exe', invalid)
+    archive.addFile('LawyerDesk.exe', invalid)
     archive.addFile('resources/app.asar', Buffer.from('asar'))
     archive.writeZip(value.portable)
 

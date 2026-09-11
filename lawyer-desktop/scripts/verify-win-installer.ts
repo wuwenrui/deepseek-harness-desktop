@@ -90,9 +90,9 @@ export function verifyWindowsInstaller(
   const distDir = join(options.desktopRoot, 'dist')
   const installerPath = join(
     distDir,
-    `LawyerCopilot-${options.version}-x64-Setup.exe`,
+    `LawyerDesk-${options.version}-x64-Setup.exe`,
   )
-  const applicationPath = join(distDir, 'win-unpacked', 'LawyerCopilot.exe')
+  const applicationPath = join(distDir, 'win-unpacked', 'LawyerDesk.exe')
 
   assertPortableExecutable(installerPath, 'Windows NSIS installer')
   assertPortableExecutable(applicationPath, 'unpacked Windows application')
