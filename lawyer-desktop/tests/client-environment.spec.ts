@@ -388,12 +388,12 @@ describe('advanced desktop layout', () => {
     const snapshots: object[] = []
     layout.subscribe(() => { snapshots.push(layout.getSnapshot()) })
     layout.toggleSidebar()
-    layout.openDetails()
-    layout.closeDetails()
+    layout.openRightbar(false, false)
+    layout.closeRightbar()
     expect(snapshots).toEqual([
-      { sidebar: 0, details: 0, narrow: false, narrowExpanded: false },
-      { sidebar: 0, details: 360, narrow: false, narrowExpanded: false },
-      { sidebar: 0, details: 0, narrow: false, narrowExpanded: false },
+      { sidebar: 0, rightbar: null, rightbarShown: false, rightbarTrack: false, rightbarFullscreen: false, narrow: false, narrowExpanded: false },
+      { sidebar: 0, rightbar: null, rightbarShown: true, rightbarTrack: false, rightbarFullscreen: false, narrow: false, narrowExpanded: false },
+      { sidebar: 0, rightbar: null, rightbarShown: false, rightbarTrack: false, rightbarFullscreen: false, narrow: false, narrowExpanded: false },
     ])
   })
 

@@ -337,3 +337,11 @@ html, body, #root { background: transparent; font-size: 13px; }
 .lawyerDesktopCaption { opacity:.55; margin-left:9px; font-size:11px; }
 .lawyerDesktopRestart { margin-left:auto; -webkit-app-region:no-drag; color:var(--dsw-alias-label-secondary); font-size:11px; padding:3px 9px; border:1px solid var(--dsw-alias-border-l1); border-radius:5px; background:transparent; cursor:pointer; }
 .lawyerDesktopRestart:hover { background:var(--dsw-alias-interactive-bg-hover); }
+
+.dshDesktopFrameTitlebar[data-mode="extended"]:not([data-material="off"]) {
+  --dsh-desktop-frame-fill: color-mix(in srgb, var(--dsw-alias-bg-base) 18%, transparent);
+}
+
+.dshDesktopRemoteControl { margin-right: 8px; display: inline-flex; align-items: center; gap: 6px; -webkit-app-region: no-drag; }
+
+.dshDesktopRemoteControlDot { width: 6px; height: 6px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
