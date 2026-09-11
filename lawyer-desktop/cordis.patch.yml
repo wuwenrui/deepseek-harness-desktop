@@ -1,0 +1,15 @@
+- insert:
+    - id: desktop-shell
+      name: lawyer-dsh-desktop
+      config:
+        mode: compatibility
+        macosMaterial: off
+        windowsMaterial: off
+        networkExposure: loopback
+        openBrowser: false
+- id: web-runtime
+  config:
+    openBrowser: false
+    printUrl: false
+    surfaceContext: true
+    trustedHosts: []
