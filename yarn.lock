@@ -12882,14 +12882,14 @@ __metadata:
 
 "@lawyer-dsh/lawyer-platform@file:../vendor/lawyer-product/platform.tgz::locator=lawyer-dsh-desktop%40workspace%3Alawyer-desktop":
   version: 0.1.5
-  resolution: "@lawyer-dsh/lawyer-platform@file:../vendor/lawyer-product/platform.tgz#../vendor/lawyer-product/platform.tgz::hash=07dedf&locator=lawyer-dsh-desktop%40workspace%3Alawyer-desktop"
+  resolution: "@lawyer-dsh/lawyer-platform@file:../vendor/lawyer-product/platform.tgz#../vendor/lawyer-product/platform.tgz::hash=f49139&locator=lawyer-dsh-desktop%40workspace%3Alawyer-desktop"
   dependencies:
     pnpm: "npm:11.7.0"
   peerDependencies:
     "@deepseek-ai/cordis": ^4.0.2
     "@deepseek-ai/dsh-home-paths": 0.1.3-alpha.2
     "@deepseek-ai/dsh-product-policy": 0.1.3-alpha.2
-  checksum: 10c0/c32d6773d47ea52518cb8a1ed0d013b6881b686340ffa756c2e8e3dbeaa1ee5ea8abb1e59c0c84c4eb9ffd6d29c012942123dbb9a8f2e632709df70e187ddf1b
+  checksum: 10c0/23050333ccdf2b4834a8a7fa198793f3afd26edb760f4fc1fba87163a7be875b12421f494f67acd1a6792cc0f5f57c9bb0b5d4d117bf1b442b9d8000af2d1a9e
   languageName: node
   linkType: hard
 
