@@ -2384,12 +2384,12 @@ __metadata:
 
 "@deepseek-ai/dsh-client-ui-chat@patch:@deepseek-ai/dsh-client-ui-chat@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-chat-0.1.5-rc.2.tgz#./patches/lawyer-dsh-client-ui-chat@0.1.5-rc.2.patch::locator=deepseek-harness-desktop%40workspace%3A.":
   version: 0.1.5-rc.2
-  resolution: "@deepseek-ai/dsh-client-ui-chat@patch:@deepseek-ai/dsh-client-ui-chat@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-chat-0.1.5-rc.2.tgz%23vendor/lawyer-runtime/deepseek-ai-dsh-client-ui-chat-0.1.5-rc.2.tgz%3A%3Ahash=73326a&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/lawyer-dsh-client-ui-chat@0.1.5-rc.2.patch::version=0.1.5-rc.2&hash=e21b5d&locator=deepseek-harness-desktop%40workspace%3A."
+  resolution: "@deepseek-ai/dsh-client-ui-chat@patch:@deepseek-ai/dsh-client-ui-chat@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-chat-0.1.5-rc.2.tgz%23vendor/lawyer-runtime/deepseek-ai-dsh-client-ui-chat-0.1.5-rc.2.tgz%3A%3Ahash=73326a&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/lawyer-dsh-client-ui-chat@0.1.5-rc.2.patch::version=0.1.5-rc.2&hash=17de49&locator=deepseek-harness-desktop%40workspace%3A."
   dependencies:
     "@deepseek-ai/schemastery": "npm:^3.18.2"
   peerDependencies:
     "@deepseek-ai/cordis": ^4.0.2
-  checksum: 10c0/263994bce06327311358b3c25b870f73bdce81629b001f05ee84d4c7d3ca4cbae87c27cafe2b239ae07bb680d1c684a1605a1a8dd7d909ca6112d332be71b75a
+  checksum: 10c0/7c6b4e38a1afc69fda6e2f250797f330821faa3ab61016a434291f0e455163e5c5e49a7875b2a3afc9bcbd59172a84b84785af46aa46d839dd9a16ce1f8af254
   languageName: node
   linkType: hard
 
