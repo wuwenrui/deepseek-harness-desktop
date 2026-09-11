@@ -2491,10 +2491,10 @@ __metadata:
 
 "@deepseek-ai/dsh-client-ui-directory-picker-browse@patch:@deepseek-ai/dsh-client-ui-directory-picker-browse@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-directory-picker-browse-0.1.5-rc.2.tgz#./patches/lawyer-dsh-client-ui-directory-picker-browse@0.1.5-rc.2.patch::locator=deepseek-harness-desktop%40workspace%3A.":
   version: 0.1.5-rc.2
-  resolution: "@deepseek-ai/dsh-client-ui-directory-picker-browse@patch:@deepseek-ai/dsh-client-ui-directory-picker-browse@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-directory-picker-browse-0.1.5-rc.2.tgz%23vendor/lawyer-runtime/deepseek-ai-dsh-client-ui-directory-picker-browse-0.1.5-rc.2.tgz%3A%3Ahash=602f33&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/lawyer-dsh-client-ui-directory-picker-browse@0.1.5-rc.2.patch::version=0.1.5-rc.2&hash=d80123&locator=deepseek-harness-desktop%40workspace%3A."
+  resolution: "@deepseek-ai/dsh-client-ui-directory-picker-browse@patch:@deepseek-ai/dsh-client-ui-directory-picker-browse@file%3Avendor/lawyer-runtime/deepseek-ai-dsh-client-ui-directory-picker-browse-0.1.5-rc.2.tgz%23vendor/lawyer-runtime/deepseek-ai-dsh-client-ui-directory-picker-browse-0.1.5-rc.2.tgz%3A%3Ahash=602f33&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/lawyer-dsh-client-ui-directory-picker-browse@0.1.5-rc.2.patch::version=0.1.5-rc.2&hash=70784c&locator=deepseek-harness-desktop%40workspace%3A."
   peerDependencies:
     "@deepseek-ai/cordis": ^4.0.2
-  checksum: 10c0/1a681da01f8425d50d5f6132db00b5e3b8fdf43013b3aed3ed3a5945b02c97f6d0b518d229af4f81595e78a71daf1186103e7d78582e08e80da241077f67bf55
+  checksum: 10c0/e4ed012d89fda8acd9c9c5ba48c53b44540144a7115bce01d7ec6c194cf383d561d9ab157d736cee7b75642b88f7d11d1579a783d9f2352486d2427ee6536025
   languageName: node
   linkType: hard
 

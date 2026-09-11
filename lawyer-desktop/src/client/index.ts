@@ -89,7 +89,8 @@ export function apply(ctx: ClientContext): void {
     () => startRendererBootReporter(ctx.loader),
     'dsh-plugin-desktop: renderer boot health report',
   )
-  if (environment.platform === 'win32') {
+  // 系统选择框（win32 与 darwin）自带分栏与搜索，两个桌面平台都装上桥。
+  if (environment.platform === 'win32' || environment.platform === 'darwin') {
     ctx.effect(
       () => installDesktopDirectoryPickerBridge(),
       'dsh-plugin-desktop: native directory picker bridge',

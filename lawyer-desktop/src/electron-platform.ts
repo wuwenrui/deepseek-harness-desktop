@@ -47,7 +47,8 @@ class WindowsPlatformStrategy implements ElectronPlatformStrategy {
 class MacPlatformStrategy implements ElectronPlatformStrategy {
   readonly platform = 'darwin'
   readonly updateDownloadPlatform = 'darwin'
-  readonly canPickDirectory = false
+  /** 系统选择框自带分栏与搜索，受管产品在 macOS 上同样提供。 */
+  readonly canPickDirectory = true
   readonly canToggleShellMode = true
 
   private applicationName: string | undefined

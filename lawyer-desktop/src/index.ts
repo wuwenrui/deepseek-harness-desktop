@@ -352,7 +352,7 @@ export function apply(ctx: Context, config: Config): void {
     }),
     'dsh-plugin-desktop: renderer boot report route',
   )
-  if (runtime.platform === 'win32') {
+  if (runtime.platform !== 'linux') { // 系统选择框（含 macOS）自带分栏与搜索，两个桌面平台都注册原生选择路由
     ctx.effect(
       () => ctx.webServer.register({
         kind: 'exact',
