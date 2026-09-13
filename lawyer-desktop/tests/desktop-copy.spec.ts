@@ -63,7 +63,7 @@ describe('Desktop product copy', () => {
     expect(copy.updateCheckFailedTitle).toBe('无法检查更新')
     expect(copy.terminalErrorTitle).toBe('无法打开 DSH 终端')
     expect(copy.diagnosticsErrorTitle).toBe('无法导出诊断信息')
-    expect(copy.updateAvailableMessage('2.1.0')).toBe('律师 AI 工作台 2.1.0 已可用。')
+    expect(copy.updateAvailableMessage('2.1.0')).toBe('律衡 2.1.0 已可用。')
   })
 
   it('explains cross-channel Profile risk and routes users to Profile selection', () => {

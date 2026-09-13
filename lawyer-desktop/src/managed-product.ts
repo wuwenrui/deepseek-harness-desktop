@@ -1,7 +1,7 @@
-import { lstatSync, readlinkSync, readdirSync, unlinkSync as unlinkFallback, symlinkSync } from 'node:fs'
+import { lstatSync, readlinkSync, readdirSync, renameSync, unlinkSync as unlinkFallback, symlinkSync } from 'node:fs'
 /** Product-owned profile preparation and command identities for the lawyer desktop. */
 import { app } from 'electron'
-import { createHash } from 'node:crypto'
+import { createHash, randomUUID } from 'node:crypto'
 import { createRequire } from 'node:module'
 import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
@@ -13,7 +13,7 @@ import type { Command } from '@lawyer-dsh/market/managed-process'
 const require = createRequire(import.meta.url)
 export const PRODUCT_NAME = 'LawyerDesk'
 export const PRODUCT_PROFILE = 'lawyer'
-export const PRODUCT_BUNDLES = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', '@lawyer-dsh/lawyer-platform', '@lawyer-dsh/lawyer-brand', '@lawyer-dsh/market'] as const
+export const PRODUCT_BUNDLES = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', '@deepseek-ai/dsh-experimental-agent-team-profile', '@deepseek-ai/dsh-experimental-agent-team-web-profile', '@lawyer-dsh/lawyer-platform', '@lawyer-dsh/lawyer-brand', '@lawyer-dsh/market'] as const
 
 /** Node subprocesses must use physical package files when the shell is in ASAR. */
 export function physicalPackageFile(name: string, file: string): string {
@@ -35,6 +35,26 @@ export function desktopCommands(): { pnpm: Command; launcher: Command } {
   }
 }
 
+/**
+ * Re-compose an already initialized profile onto this release's product layers.
+ * Bundles the managed market appended stay after the product prefix, so an
+ * installation created before Agent Teams shipped gains it on the next start
+ * without losing an installed capability.
+ * @param profile - the managed profile directory.
+ */
+export function syncProductBundles(profile: string): void {
+  const manifestPath = join(profile, 'package.json')
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as { dsh?: { profile?: { bundles?: unknown } } }
+  const bundles = manifest.dsh?.profile?.bundles
+  if (!Array.isArray(bundles) || bundles.some(bundle => typeof bundle !== 'string')) throw new Error('无效的受管产品配置')
+  const product = new Set<string>(PRODUCT_BUNDLES)
+  const composed = [...PRODUCT_BUNDLES, ...(bundles as string[]).filter(bundle => !product.has(bundle))]
+  if (composed.length === bundles.length && composed.every((bundle, index) => bundle === bundles[index])) return
+  const temporary = `${manifestPath}.${randomUUID()}.tmp`
+  writeFileSync(temporary, JSON.stringify({ ...manifest, dsh: { ...manifest.dsh, profile: { ...manifest.dsh?.profile, bundles: composed } } }, null, 2) + '\n', { mode: 0o600, flag: 'wx' })
+  renameSync(temporary, manifestPath)
+}
+
 /** Prepare only the private managed profile. Existing case files and credentials are never copied or reset. */
 export async function prepareManagedProduct(home: string): Promise<string> {
   const profile = join(home, 'profiles', PRODUCT_PROFILE)
@@ -48,9 +68,10 @@ export async function prepareManagedProduct(home: string): Promise<string> {
       await runOwned({ ...command, args: [...command.args, 'install', '--ignore-scripts', '--config.auto-install-peers=false'] }, profile, safeEnvironment())
       unlinkSync(pending)
     }
+    syncProductBundles(profile)
     return profile
   }
-  const seed = app.isPackaged ? join(process.resourcesPath, 'lawyer-product') : fileURLToPath(new URL('../../vendor/lawyer-product/', import.meta.url))
+  const seed = app.isPackaged ? join(process.resourcesPath, 'lawyerDesk') : fileURLToPath(new URL('../../vendor/lawyerDesk/', import.meta.url))
   const cache = join(home, 'product-artifacts')
   mkdirSync(cache, { recursive: true, mode: 0o700 })
   const dependencies: Record<string, string> = {}

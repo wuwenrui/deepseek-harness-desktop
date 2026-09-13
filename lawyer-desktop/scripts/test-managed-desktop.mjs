@@ -21,6 +21,7 @@ const out=join(root,'dist',packaged?'e2e-packaged':'e2e-source');mkdirSync(out,{
 const material=join(home,'workspace');mkdirSync(material);writeFileSync(join(material,'测试合同.txt'),'服务合同：甲方委托乙方提供服务，约定分期支付费用。仅为桌面端集成验收材料。\n')
 const central=join(workspace,'lawyer-harness/dist/central-market')
 let modelCalls=0
+const modelRequests=[]
 const traffic=[]
 const server=createServer(async(req,res)=>{
  traffic.push(req.url)
@@ -31,6 +32,7 @@ const server=createServer(async(req,res)=>{
  if(req.url==='/v1/chat/completions'){
   assert.equal(req.headers.authorization,'Bearer desktop-test-token');modelCalls++
   const chunks=[];for await(const chunk of req)chunks.push(chunk);const body=JSON.parse(Buffer.concat(chunks));assert.equal(body.model,'deepseek-v4-flash')
+  modelRequests.push({conv:JSON.stringify(body.messages??[]).includes('只验证桌面端的本站模型通路'),names:(body.tools??[]).map(tool=>tool?.function?.name??tool?.name).filter(name=>typeof name==='string')})
   const base={id:'native-integration',object:'chat.completion.chunk',created:1,model:body.model}
   res.writeHead(200,{'content-type':'text/event-stream','cache-control':'no-cache'})
   res.write(`data: ${JSON.stringify({...base,choices:[{index:0,delta:{role:'assistant',content:'桌面端已通过本站模型通路验收。'},finish_reason:null}]})}\n\n`)
@@ -61,7 +63,7 @@ async function launch(){
   }
  },fixture)
  port=new URL(page.url()).port
- await page.waitForFunction(()=>Array.from(document.querySelectorAll('[role=img]')).some(el=>el.getAttribute('aria-label')==='律师工作台印章'))
+ await page.waitForFunction(()=>Array.from(document.querySelectorAll('[role=img]')).some(el=>el.getAttribute('aria-label')==='律衡印章'))
 }
 async function close(){
  if(!instance)return
@@ -85,14 +87,14 @@ try{
  await launch()
  const isolation=await instance.evaluate(()=>{const {webContents}=process.getBuiltinModule('module').createRequire(process.execPath)('electron');return webContents.getAllWebContents().filter(w=>w.getURL().startsWith('http://127.0.0.1:')).map(w=>{const p=w.getLastWebPreferences();return{nodeIntegration:p.nodeIntegration,contextIsolation:p.contextIsolation,sandbox:p.sandbox}})})
  assert.ok(isolation.length>0);for(const p of isolation)assert.deepEqual(p,{nodeIntegration:false,contextIsolation:true,sandbox:true})
- await page.waitForTimeout(500);assert.deepEqual(await palette(),{base:'#f6f1e6',brand:'#a63a2a'});await screenshot('01-brand-light')
+ await page.waitForTimeout(500);assert.deepEqual(await palette(),{base:'#f7f7f8',brand:'#a63a2a'});await screenshot('01-brand-light')
  await page.getByRole('button',{name:'设置',exact:true}).click()
  await page.getByRole('button',{name:'通用设置',exact:true}).click()
  await page.getByRole('button',{name:'深色',exact:true}).click()
  await page.keyboard.press('Escape')
  let dark
- for(let i=0;i<35;i++){dark=await palette();if(dark.base==='#1d2530')break;await page.waitForTimeout(100)}
- assert.deepEqual(dark,{base:'#1d2530',brand:'#db8d78'});await screenshot('02-brand-dark')
+ for(let i=0;i<35;i++){dark=await palette();if(dark.base==='#101113')break;await page.waitForTimeout(100)}
+ assert.deepEqual(dark,{base:'#101113',brand:'#c4695a'});await screenshot('02-brand-dark')
  await page.getByRole('button',{name:'设置',exact:true}).click()
  await page.getByRole('button',{name:'通用设置',exact:true}).click()
  await page.getByRole('button',{name:'浅色',exact:true}).click()
@@ -125,11 +127,32 @@ try{
  await page.getByRole('textbox',{name:'选择工作区'}).click();const picker=page.getByRole('dialog',{name:'选择工作区目录'});await picker.getByRole('button',{name:'编辑路径'}).click();await picker.getByRole('textbox',{name:'编辑路径'}).fill(material);await picker.getByRole('textbox',{name:'编辑路径'}).press('Enter');await picker.getByRole('button',{name:'打开',exact:true}).click()
  const input=page.locator('[data-composer-input][contenteditable=true]').last();await input.waitFor({timeout:15000});await input.click();await input.pressSequentially('只验证桌面端的本站模型通路，不执行业务提交。');await input.press('Enter')
  await page.getByText('桌面端已通过本站模型通路验收。',{exact:false}).first().waitFor({timeout:30000});await screenshot('05-native-conversation');assert.ok(modelCalls>0)
+ // Agent Teams is a default capability: the Lead session's model tool surface carries the Team
+ // tools, and the shipped Web profile exposes the roster panel. Team tools are agent-scoped, so an
+ // unscoped /lawyer-platform/ready probe legitimately cannot see them.
+ const conversation=modelRequests.find(request=>request.conv)
+ assert.ok(conversation,'the conversation turn never reached the model fixture: '+JSON.stringify(modelRequests.map(request=>({conv:request.conv,tools:request.names.length}))))
+ for(const tool of ['spawn_teammate','send_message','list_agents','wait_agent','team_task_create','team_task_list'])assert.ok(conversation.names.includes(tool),'Agent Teams tool is missing from the Lead model tool surface: '+tool+' (received '+conversation.names.join(',')+')')
+ const teamTrigger=page.getByRole('button',{name:'Agent Team',exact:true}).first();await teamTrigger.waitFor({timeout:15000});await teamTrigger.click()
+ const teamPanel=page.getByRole('dialog',{name:'Agent Team'});await teamPanel.waitFor({timeout:15000})
+ await teamPanel.getByText(new RegExp('^(成员|Members)$')).first().waitFor({timeout:15000});await screenshot('06-agent-team-panel')
+ await teamPanel.getByRole('button',{name:'关闭',exact:true}).click()
+ await close()
+ // An installation created before Agent Teams shipped composes only the legacy product prefix;
+ // the next start must move it onto the current prefix without dropping market-installed plugins.
+ const profileManifest=join(home,'profiles/lawyer/package.json')
+ const legacy=JSON.parse(readFileSync(profileManifest,'utf8'))
+ const marketBundles=legacy.dsh.profile.bundles.filter(name=>name.startsWith('@lawyer-dsh/lawyer-filing')||name.startsWith('@lawyer-dsh/lawyer-mediation'))
+ legacy.dsh.profile.bundles=['@deepseek-ai/dsh-base','@deepseek-ai/dsh-web-app','@lawyer-dsh/lawyer-platform','@lawyer-dsh/lawyer-brand','@lawyer-dsh/market',...marketBundles]
+ writeFileSync(profileManifest,JSON.stringify(legacy,null,2)+'\n')
+ await launch()
+ const migrated=JSON.parse(readFileSync(profileManifest,'utf8')).dsh.profile.bundles
+ assert.deepEqual(migrated,['@deepseek-ai/dsh-base','@deepseek-ai/dsh-web-app','@deepseek-ai/dsh-experimental-agent-team-profile','@deepseek-ai/dsh-experimental-agent-team-web-profile','@lawyer-dsh/lawyer-platform','@lawyer-dsh/lawyer-brand','@lawyer-dsh/market',...marketBundles])
  await close()
  const sessionDir=join(home,'sessions');const files=readdirSync(sessionDir,{recursive:true}).filter(name=>String(name).endsWith('.jsonl.zstd'));assert.ok(files.length>0)
  const text=files.map(file=>{const b=readFileSync(join(sessionDir,String(file)));return scanZstdFrames(b).frames.map(({start,end})=>zstdDecompressSync(b.subarray(start,end)).toString()).join('')}).join('\n')
  assert.ok(text.split('\n').filter(Boolean).map(JSON.parse).some(e=>e.type==='assistant/message'&&JSON.stringify(e.data).includes('桌面端已通过本站模型通路验收。')))
  assert.deepEqual(errors,[])
- const report={ok:true,packaged,executable,home,modes,brand:{light:'#f6f1e6',primary:'#a63a2a',dark:'#1d2530',darkPrimary:'#db8d78'},nativeIsolation:isolation,nativeTerminalBlocked:true,ordinaryBrowserDenied:true,realPluginInstall:['lawyer-filing@0.3.1','lawyer-mediation@0.1.0'],modelCalls,durableSessions:files.length,pageErrors:errors,remoteServices:'test HTTP fixtures only',productionModelCall:false}
+ const report={ok:true,packaged,executable,home,modes,brand:{light:'#f7f7f8',primary:'#a63a2a',dark:'#101113',darkPrimary:'#c4695a'},nativeIsolation:isolation,nativeTerminalBlocked:true,ordinaryBrowserDenied:true,realPluginInstall:['lawyer-filing@0.3.1','lawyer-mediation@0.1.0'],agentTeam:{enabled:true,leadTools:['spawn_teammate','send_message','list_agents','wait_agent','team_task_create','team_task_list'].filter(name=>(modelRequests.find(request=>request.conv)?.names??[]).includes(name)),panelOpened:true,upgradeMigrated:true},modelCalls,durableSessions:files.length,pageErrors:errors,remoteServices:'test HTTP fixtures only',productionModelCall:false}
  writeFileSync(join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2))
 }catch(error){writeFileSync(join(out,'failure.log'),String(error.stack??error)+'\n'+logs);if(page){await page.screenshot({path:join(out,'failure.png')}).catch(()=>{});writeFileSync(join(out,'failure-page.txt'),await page.locator('body').innerText().catch(()=>''))}console.error(error);console.error('Test evidence: '+out);process.exitCode=1}finally{await close();server.closeAllConnections();await new Promise(r=>server.close(r))}

@@ -258,7 +258,10 @@ const electron = vi.hoisted(() => {
     Menu: {
       buildFromTemplate: vi.fn((template: unknown[]) => {
         const first = template[0] as { label?: unknown, submenu?: unknown } | undefined
-        if (first?.label === 'LawyerDesk' && Array.isArray(first.submenu)) {
+        // 应用菜单由「关于」项标识，而不是靠标题文字：中文界面下标题是中文名。
+        const isApplicationMenu = Array.isArray(first?.submenu)
+          && (first.submenu as Array<{ role?: unknown }>).some(item => item?.role === 'about')
+        if (isApplicationMenu) {
           applicationMenuTemplates.push(template)
         } else {
           menuTemplates.push(template)
@@ -443,7 +446,7 @@ describe('Electron desktop runtime', () => {
     expect(electron.browserWindows[0]?.removeMenu).not.toHaveBeenCalled()
     expect(electron.app.dock.setIcon).toHaveBeenCalledWith(electron.appIcon)
     expect(electron.applicationMenuTemplates[0]?.map(item => (item as { label?: string }).label)).toEqual([
-      '律师 AI 工作台', '文件', '编辑', '显示', '窗口',
+      '律衡', '文件', '编辑', '显示', '窗口',
     ])
     expect(electron.Menu.setApplicationMenu).toHaveBeenCalledWith({
       template: electron.applicationMenuTemplates[0],
@@ -1240,7 +1243,7 @@ describe('Electron desktop runtime', () => {
     expect(runtime.locale).toBe('zh')
     expect((electron.menuTemplates.at(-1) as Array<{ label?: string }>).map(item => item.label))
       .toEqual(expect.arrayContaining([
-        '打开律师 AI 工作台',
+        '打开律衡',
         '模式：兼容模式',
         '退出',
       ]))
@@ -1259,7 +1262,7 @@ describe('Electron desktop runtime', () => {
     expect(runtime.locale).toBe('zh')
     expect((electron.menuTemplates.at(-1) as Array<{ label?: string }>).map(item => item.label))
       .toEqual(expect.arrayContaining([
-        '打开律师 AI 工作台',
+        '打开律衡',
         '模式：兼容模式',
         '退出',
       ]))

@@ -355,7 +355,7 @@ function parseState(text: string): ParsedUpdateState {
 
 function updateAvailableNotification(locale: DesktopLocale, version: string): DesktopNotification {
   return locale === 'zh'
-    ? { title: '律师 AI 工作台有可用更新', body: `版本 ${version} 已可下载。打开律师 AI 工作台即可继续。` }
+    ? { title: '律衡有可用更新', body: `版本 ${version} 已可下载。打开律衡即可继续。` }
     : { title: 'LawyerDesk Update Available', body: `Version ${version} is ready to download. Open LawyerDesk to continue.` }
 }
 

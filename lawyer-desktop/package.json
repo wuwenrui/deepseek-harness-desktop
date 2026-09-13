@@ -1,7 +1,7 @@
 {
   "name": "lawyer-dsh-desktop",
   "version": "0.1.0-beta.1",
-  "description": "律师 AI 工作台桌面版：品牌主题、本站模型服务与受管法律插件市场",
+  "description": "律衡桌面版：品牌主题、本站模型服务与受管法律插件市场",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -192,6 +192,11 @@
     "@deepseek-ai/dsh-cordis-host-runner": "0.1.5-rc.2",
     "@deepseek-ai/dsh-credentials": "0.1.5-rc.2",
     "@deepseek-ai/dsh-deepseek-llm-api-extensions": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-experimental-agent-team": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-experimental-agent-team-profile": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-experimental-agent-team-web-profile": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-experimental-client-ui-agent-team": "0.1.5-rc.2",
+    "@deepseek-ai/dsh-experimental-tool-agent-team": "0.1.5-rc.2",
     "@deepseek-ai/dsh-file-reference": "0.1.5-rc.2",
     "@deepseek-ai/dsh-fs": "0.1.5-rc.2",
     "@deepseek-ai/dsh-fs-local": "0.1.5-rc.2",
@@ -276,9 +281,9 @@
     "@deepseek-ai/dsh-workflow": "0.1.5-rc.2",
     "@deepseek-ai/dsh-workspace": "0.1.5-rc.2",
     "@deepseek-ai/schemastery": "^3.18.2",
-    "@lawyer-dsh/lawyer-brand": "file:../vendor/lawyer-product/brand.tgz",
-    "@lawyer-dsh/lawyer-platform": "file:../vendor/lawyer-product/platform.tgz",
-    "@lawyer-dsh/market": "file:../vendor/lawyer-product/market.tgz",
+    "@lawyer-dsh/lawyer-brand": "file:../vendor/lawyerDesk/brand.tgz",
+    "@lawyer-dsh/lawyer-platform": "file:../vendor/lawyerDesk/platform.tgz",
+    "@lawyer-dsh/market": "file:../vendor/lawyerDesk/market.tgz",
     "adm-zip": "^0.6.0",
     "fs-ext": "2.1.1",
     "koffi": "3.1.5",
@@ -433,8 +438,8 @@
     },
     "extraResources": [
       {
-        "from": "../vendor/lawyer-product",
-        "to": "lawyer-product"
+        "from": "../vendor/lawyerDesk",
+        "to": "lawyerDesk"
       }
     ],
     "asarUnpack": [

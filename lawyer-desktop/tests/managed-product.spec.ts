@@ -1,9 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs'
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 vi.mock('electron', () => ({ app: { isPackaged: false } }))
-import { PRODUCT_BUNDLES, prepareProductEnvironment, validateManagedProfile, desktopCommands } from '../src/managed-product.ts'
+import { PRODUCT_BUNDLES, prepareProductEnvironment, syncProductBundles, validateManagedProfile, desktopCommands } from '../src/managed-product.ts'
 let root: string
 beforeEach(() => { root = mkdtempSync(join(tmpdir(), 'lawyer-desktop-policy-')) })
 afterEach(() => { rmSync(root, { recursive: true, force: true }); vi.unstubAllEnvs() })
@@ -13,12 +13,40 @@ function profile(change: (data: { dependencies: Record<string, string>; dsh: { p
   const path = join(root, 'profiles/lawyer'); mkdirSync(path, { recursive: true }); writeFileSync(join(path, 'package.json'), JSON.stringify(data))
   return path
 }
+function bundles(path: string): string[] {
+  const manifest = JSON.parse(readFileSync(join(path, 'package.json'), 'utf8')) as { dsh: { profile: { bundles: string[] } } }
+  return manifest.dsh.profile.bundles
+}
 describe('managed Desktop identity and profile admission', () => {
   it('retains the reviewed infrastructure in one fixed composition', () => {
     expect(validateManagedProfile(profile())).toEqual(expect.arrayContaining(['@lawyer-dsh/lawyer-brand', '@lawyer-dsh/market']))
   })
-  it.each(['@lawyer-dsh/lawyer-platform', '@lawyer-dsh/market', '@lawyer-dsh/lawyer-brand'])('does not let restore remove %s', name => {
+  it.each(['@lawyer-dsh/lawyer-platform', '@lawyer-dsh/market', '@lawyer-dsh/lawyer-brand', '@deepseek-ai/dsh-experimental-agent-team-profile', '@deepseek-ai/dsh-experimental-agent-team-web-profile'])('does not let restore remove %s', name => {
     expect(() => validateManagedProfile(profile(data => { data.dsh.profile.bundles = data.dsh.profile.bundles.filter(p => p !== name) }))).toThrow()
+  })
+  it('ships Agent Teams between the Web surface and the lawyer product layers', () => {
+    expect(PRODUCT_BUNDLES).toEqual([
+      '@deepseek-ai/dsh-base',
+      '@deepseek-ai/dsh-web-app',
+      '@deepseek-ai/dsh-experimental-agent-team-profile',
+      '@deepseek-ai/dsh-experimental-agent-team-web-profile',
+      '@lawyer-dsh/lawyer-platform',
+      '@lawyer-dsh/lawyer-brand',
+      '@lawyer-dsh/market',
+    ])
+  })
+  it('upgrades an installation created before Agent Teams without dropping market bundles', () => {
+    const legacy = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', '@lawyer-dsh/lawyer-platform', '@lawyer-dsh/lawyer-brand', '@lawyer-dsh/market']
+    const path = profile(data => { data.dsh.profile.bundles = [...legacy, '@community/fixture-plugin'] })
+    syncProductBundles(path)
+    expect(bundles(path)).toEqual([...PRODUCT_BUNDLES, '@community/fixture-plugin'])
+    expect(() => validateManagedProfile(path)).not.toThrow()
+  })
+  it('leaves an already composed profile untouched', () => {
+    const path = profile(data => { data.dsh.profile.bundles = [...PRODUCT_BUNDLES, '@community/fixture-plugin'] })
+    const before = readFileSync(join(path, 'package.json'), 'utf8')
+    syncProductBundles(path)
+    expect(readFileSync(join(path, 'package.json'), 'utf8')).toBe(before)
   })
   it('rejects live arbitrary recomposition and an unrecorded dependency', () => {
     expect(() => validateManagedProfile(profile(data => { data.dsh.profile.patchReload = 'live' }))).toThrow()

@@ -103,6 +103,6 @@ async function main(): Promise<void> {
 void main().catch(async (error: unknown) => {
   const message = error instanceof Error ? error.message : String(error)
   console.error(`lawyer-desktop: ${message.replace(/token=\S+/g, 'token=[redacted]')}`)
-  if (app.isReady()) await dialog.showMessageBox({ type: 'error', title: '律师 AI 工作台', message: '工作台未能完成启动', detail: message, buttons: ['关闭'] })
+  if (app.isReady()) await dialog.showMessageBox({ type: 'error', title: '律衡', message: '工作台未能完成启动', detail: message, buttons: ['关闭'] })
   await stop(1)
 })

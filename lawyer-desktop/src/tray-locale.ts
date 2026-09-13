@@ -48,11 +48,11 @@ const labels: Record<DesktopLocale, Record<DesktopTrayLabelKey, (value: string) 
     addProfile: () => '新建 Profile…',
     checkForUpdates: () => '检查更新…',
     checkingForUpdates: () => '正在检查更新…',
-    downloadingUpdate: version => `正在下载律师 AI 工作台 ${version}…`,
+    downloadingUpdate: version => `正在下载律衡 ${version}…`,
     enterSafeMode: () => '进入安全模式…',
     exportDiagnostics: () => '导出诊断信息…',
     exitSafeMode: () => '退出安全模式并重启…',
-    openDesktop: productName => `打开 ${productName}`,
+    openDesktop: () => '打开律衡',
     openTerminal: () => '打开 DSH 终端',
     profile: profileName => `Profile：${profileName}`,
     quit: () => '退出',
@@ -62,7 +62,7 @@ const labels: Record<DesktopLocale, Record<DesktopTrayLabelKey, (value: string) 
     extended: () => '扩展窗口',
     installStable: () => '安装稳定版…',
     unavailableForDesktop: profileName => `${profileName}（不可用于桌面端）`,
-    updateAvailable: version => `律师 AI 工作台 ${version} 可用`,
+    updateAvailable: version => `律衡 ${version} 可用`,
   },
 }
 
@@ -91,9 +91,9 @@ export const rendererRecoveryCopy: Record<DesktopLocale, DesktopRestartConfirmat
     cancel: 'Not now',
   },
   zh: {
-    title: '恢复律师 AI 工作台',
+    title: '恢复律衡',
     message: '界面未能自动恢复。',
-    detail: '自动恢复连续失败，为避免重启循环已暂停。可以再次尝试恢复，无需重启后台服务。未发送的输入可能丢失。请从托盘导出诊断信息以继续调查。稍后可从托盘选择“打开律师 AI 工作台”再次打开此提示。',
+    detail: '自动恢复连续失败，为避免重启循环已暂停。可以再次尝试恢复，无需重启后台服务。未发送的输入可能丢失。请从托盘导出诊断信息以继续调查。稍后可从托盘选择“打开律衡”再次打开此提示。',
     confirm: '再次尝试恢复',
     cancel: '暂不处理',
   },
@@ -118,15 +118,15 @@ const restartConfirmationCopy: Record<DesktopLocale, Record<'normal' | 'recovery
   },
   zh: {
     normal: {
-      title: '重启律师 AI 工作台',
-      message: '现在重启律师 AI 工作台？',
+      title: '重启律衡',
+      message: '现在重启律衡？',
       detail: '正在运行的操作可能中断，未发送的内容可能丢失。已保存的设置会保留。',
       confirm: '重启应用',
       cancel: '取消',
     },
     recovery: {
       title: '重启到恢复模式',
-      message: '重启律师 AI 工作台并进入恢复模式？',
+      message: '重启律衡并进入恢复模式？',
       detail: '应用将先打开恢复助手，暂不加载当前 Profile 和插件。正在运行的操作可能中断，未发送的内容可能丢失。',
       confirm: '重启到恢复模式',
       cancel: '取消',

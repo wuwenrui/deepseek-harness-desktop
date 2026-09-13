@@ -17,7 +17,7 @@ export default async function verify(context) {
   const policy=readFileSync(join(physical,'node_modules/@deepseek-ai/dsh-product-policy/lib/index.js'),'utf8')
   if(!policy.includes('https://model.codingrui.work/v1'))throw new Error('managed model endpoint not sealed in runtime')
   for(const file of ['platform.tgz','brand.tgz','market.tgz']) {
-    const packaged=join(resources,'lawyer-product',file), source=join(context.packager.projectDir,'../vendor/lawyer-product',file)
+    const packaged=join(resources,'lawyerDesk',file), source=join(context.packager.projectDir,'../vendor/lawyerDesk',file)
     if(!existsSync(packaged))throw new Error('missing first-run seed '+file)
     const sha=b=>createHash('sha256').update(b).digest('hex')
     if(sha(readFileSync(packaged))!==sha(readFileSync(source)))throw new Error('seed artifact mismatch '+file)

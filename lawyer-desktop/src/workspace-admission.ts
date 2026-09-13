@@ -73,7 +73,7 @@ export class ElectronWorkspaceAdmission {
       type: 'error',
       title: zh ? '不支持的工作区存储' : 'Unsupported Workspace Storage',
       message: zh
-        ? `${decision.concern.fileSystem ?? '当前文件系统'} 不能安全用作律师 AI 工作台工作区。`
+        ? `${decision.concern.fileSystem ?? '当前文件系统'} 不能安全用作律衡工作区。`
         : `${decision.concern.fileSystem ?? 'This filesystem'} cannot safely host a LawyerDesk workspace.`,
       detail: zh
         ? `请选择本地 NTFS 或 ReFS 磁盘上的文件夹。exFAT、FAT32、网络盘和无法检测的磁盘不会被保存为工作区。\n\n${path}`

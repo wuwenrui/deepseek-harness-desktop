@@ -1,6 +1,7 @@
 /** Localized macOS application menu owned by the Electron platform adapter. */
 
 import type { MenuItemConstructorOptions } from 'electron'
+import { DESKTOP_PRODUCT_NAME_ZH } from './product-identity.ts'
 
 /** Languages supported by the native shell menu. */
 export type NativeMenuLocale = 'en' | 'zh-CN'
@@ -125,22 +126,26 @@ export function macApplicationMenuTemplate(
   additions: readonly MenuItemConstructorOptions[] = [],
 ): MenuItemConstructorOptions[] {
   const label = LABELS[locale]
+  // 传入的是打包标识（LawyerDesk）；中文菜单显示中文产品名，且中文不加分隔空格。
+  const chinese = locale === 'zh-CN'
+  const name = chinese ? DESKTOP_PRODUCT_NAME_ZH : appName
+  const named = (verb: string) => (chinese ? `${verb}${name}` : `${verb} ${name}`)
   const nativeAdditions = additions.length === 0
     ? [{ type: 'separator' as const }]
     : [{ type: 'separator' as const }, ...additions, { type: 'separator' as const }]
   return [
     {
-      label: appName,
+      label: name,
       submenu: [
-        { label: `${label.about} ${appName}`, role: 'about' },
+        { label: named(label.about), role: 'about' },
         ...nativeAdditions,
         { label: label.services, role: 'services' },
         { type: 'separator' },
-        { label: `${label.hide} ${appName}`, role: 'hide' },
+        { label: named(label.hide), role: 'hide' },
         { label: label.hideOthers, role: 'hideOthers' },
         { label: label.showAll, role: 'unhide' },
         { type: 'separator' },
-        { label: `${label.quit} ${appName}`, role: 'quit' },
+        { label: named(label.quit), role: 'quit' },
       ],
     },
     {

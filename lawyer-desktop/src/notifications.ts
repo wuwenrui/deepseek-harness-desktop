@@ -40,9 +40,9 @@ const NOTIFICATION_COPY: Record<DesktopLocale, Record<NotificationOutcome, Deskt
   },
   zh: {
     'turn-completed': { title: '用户回合已完成', body: '一个由你发起的回合已完成。' },
-    'turn-failed': { title: '用户回合失败', body: '一个由你发起的回合未能完成，请打开律师 AI 工作台查看详情。' },
+    'turn-failed': { title: '用户回合失败', body: '一个由你发起的回合未能完成，请打开律衡查看详情。' },
     'job-completed': { title: '后台任务已完成', body: '有一个后台任务已结束。' },
-    'job-failed': { title: '后台任务失败', body: '一个后台任务未能完成，请打开律师 AI 工作台查看详情。' },
+    'job-failed': { title: '后台任务失败', body: '一个后台任务未能完成，请打开律衡查看详情。' },
   },
 }
 

@@ -9,7 +9,7 @@ describe('Windows assisted installer messages', () => {
       installing?: Record<string, string>
     }
 
-    expect(messages.installing?.zh_CN).toBe('律师 AI 工作台正在安装，可能需要几分钟；请保持此窗口打开。')
+    expect(messages.installing?.zh_CN).toBe('律衡正在安装，可能需要几分钟；请保持此窗口打开。')
     expect(messages.installing?.en).toContain('This may take several minutes')
   })
 })

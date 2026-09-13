@@ -20,10 +20,10 @@ describe('native macOS application menu', () => {
     const template = macApplicationMenuTemplate('LawyerDesk', 'zh-CN')
 
     expect(template.map(item => item.label)).toEqual([
-      '律师 AI 工作台', '文件', '编辑', '显示', '窗口',
+      '律衡', '文件', '编辑', '显示', '窗口',
     ])
     expect(submenu(template[0]!).map(item => item.label).filter(Boolean)).toEqual([
-      '关于律师 AI 工作台', '服务', '隐藏律师 AI 工作台', '隐藏其他', '全部显示', '退出律师 AI 工作台',
+      '关于律衡', '服务', '隐藏律衡', '隐藏其他', '全部显示', '退出律衡',
     ])
     expect(submenu(template[1]!)).toEqual([
       expect.objectContaining({ label: '关闭窗口', role: 'close' }),
