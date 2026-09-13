@@ -1,4 +1,4 @@
-# LawyerCopilot managed Desktop variant
+# LawyerDesk managed Desktop variant
 
 This package is the managed legal-product variant derived from `dsh-plugin-desktop-beta` at outer commit `8368da47c4a32e813dc6e0190b8d07447e55251b`. It intentionally replaces the unrestricted bootstrap with `src/managed-main.ts` while reusing the native shell, renderer isolation, window/tray lifecycle and client carrier.
 

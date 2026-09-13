@@ -7,7 +7,6 @@ import { DSH_LAUNCH_ENVIRONMENT_KEY } from '@deepseek-ai/dsh-launch-environment'
 import { assertLawyerComposition, claimLawyerProcess, enableLawyerPolicy, installLawyerFetchPolicy, protectLawyerFiles } from '@deepseek-ai/dsh-product-policy'
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { homedir } from 'node:os'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import type { PatchOptions } from '@deepseek-ai/cordis-plugin-include'
 import { ElectronDesktopRuntime } from './electron-runtime.ts'
@@ -15,10 +14,11 @@ import { createDesktopBrowserAccess } from './desktop-browser-access.ts'
 import { DesktopLanHttpsRuntime } from './lan-https-runtime.ts'
 import { installProfilePackageResolver } from './module-resolution.ts'
 import { PRODUCT_NAME, PRODUCT_PROFILE, desktopCommands, prepareManagedProduct, prepareProductEnvironment, validateManagedProfile, healPhysicalPresetFallback } from './managed-product.ts'
+import { resolveLawyerDesktopHome } from './desktop-home.ts'
 
 const packageName = 'lawyer-dsh-desktop'
 const installAnchor = fileURLToPath(new URL('../package.json', import.meta.url))
-const home = process.env.LAWYER_DESKTOP_HOME ?? join(homedir(), '.lawyercopilot-managed-desktop')
+const home = resolveLawyerDesktopHome()
 mkdirSync(home, { recursive: true, mode: 0o700 })
 app.setName(PRODUCT_NAME)
 app.setPath('userData', join(home, 'desktop-shell'))

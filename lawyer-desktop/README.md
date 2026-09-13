@@ -1,4 +1,4 @@
-# LawyerCopilot managed Desktop
+# LawyerDesk managed Desktop
 
 English | [中文](README.zh.md)
 
@@ -8,7 +8,7 @@ This is the legal-product variant derived from [Anywhere Labs DSH Desktop](https
 
 The package reuses the Electron native shell generation, authenticated loopback WebContentsView, window/tray lifecycle, native chrome and renderer isolation. `managed-main.ts` owns the fixed `lawyer` profile and activates our product policy before loading any plugins. The runtime comes from our verified Harness build, not an unmodified npm runtime; the original ten Desktop compatibility patches are rebased onto those tarballs.
 
-The private data home defaults to `~/.lawyercopilot-managed-desktop`, separate from both `~/.dsh` and the earlier Web product at `~/.lawyer-harness`. Existing user data is not overwritten or silently imported. The first run installs the built-in, content-addressed product packages using the bundled pnpm under Electron Node mode. That first-run dependency materialization may need network access; it does not need a system Node.js installation.
+The private data home defaults to `~/.lawyerdesk-managed-desktop`; existing installations in the legacy `~/.lawyercopilot-managed-desktop` home continue there automatically. Both are separate from `~/.dsh` and the earlier Web product at `~/.lawyer-harness`. No user data is copied, overwritten or silently imported. The first run installs the built-in, content-addressed product packages using the bundled pnpm under Electron Node mode. That first-run dependency materialization may need network access; it does not need a system Node.js installation.
 
 All five Agent presets remain: Lawyer (default), Standard, PTC, Minimal and Creation. This is distinct from native **presentation mode**, which this product fixes to compatibility presentation. Ad-hoc dynamic plugin activation remains restricted to the reviewed market path.
 
@@ -46,7 +46,7 @@ node scripts/package-dir.mjs                # current-host, unsigned, publish=ne
 node scripts/test-managed-desktop.mjs --packaged
 ```
 
-The macOS ARM64 directory artifact is `dist/mac-arm64/LawyerCopilot.app`. Product artifact checks verify the managed entry, exact seed bytes, physical Node files and final executable fuses. The test script checks the real native light/dark UI, five presets, token/model controls, rejected native/HTTP bypasses, actual legal-plugin installation, restart, model streaming and compressed Session persistence. Reports and screenshots are in `dist/e2e-source` and `dist/e2e-packaged`.
+The macOS ARM64 directory artifact is `dist/mac-arm64/LawyerDesk.app`. Product artifact checks verify the managed entry, exact seed bytes, physical Node files and final executable fuses. The test script checks the real native light/dark UI, five presets, token/model controls, rejected native/HTTP bypasses, actual legal-plugin installation, restart, model streaming and compressed Session persistence. Reports and screenshots are in `dist/e2e-source` and `dist/e2e-packaged`.
 
 `productionModelCall: false` in a report means remote model and catalog HTTP were test fixtures, not production. The actual central endpoint and an authorized user token require separate live verification. No test performs court filing or another legal-system submission.
 

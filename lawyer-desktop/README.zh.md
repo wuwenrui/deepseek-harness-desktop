@@ -1,4 +1,4 @@
-# LawyerCopilot 受管桌面版
+# LawyerDesk 受管桌面版
 
 [English](README.md) | 中文
 
@@ -8,7 +8,7 @@
 
 复用原项目的 Electron 窗口、托盘、原生栏、认证回环 WebContentsView 和 renderer 隔离。由 `managed-main.ts` 在插件加载前启用产品策略，固定启动 `lawyer` profile。运行时来自我们已校验的 Harness 构建，并重新应用原桌面项目的十份兼容补丁；不是直接换回未经改造的 npm 宿主。
 
-默认数据目录为 `~/.lawyercopilot-managed-desktop`，与 `~/.dsh` 及此前 Web 产品的 `~/.lawyer-harness` 分离。不会覆盖或静默导入旧数据。首次启动以 Electron Node 模式运行内置 pnpm，安装内容寻址的基础包；首次依赖准备可能需要联网，但用户无需另装 Node.js。
+默认数据目录为 `~/.lawyerdesk-managed-desktop`；已有安装若使用旧的 `~/.lawyercopilot-managed-desktop`，会自动继续使用旧目录。两者都与 `~/.dsh` 及此前 Web 产品的 `~/.lawyer-harness` 分离。不会复制、覆盖或静默导入旧数据。首次启动以 Electron Node 模式运行内置 pnpm，安装内容寻址的基础包；首次依赖准备可能需要联网，但用户无需另装 Node.js。
 
 保留律师（默认）、标准、PTC、极简、创造五种 Agent 预设。这与原生**窗口呈现模式**不是一回事；当前产品固定兼容布局。未经审核的新动态插件仍不能绕过市场直接执行。
 
@@ -47,7 +47,7 @@ node scripts/package-dir.mjs                # 当前宿主平台、本地未签�
 node scripts/test-managed-desktop.mjs --packaged
 ```
 
-macOS ARM64 目录产物为 `dist/mac-arm64/LawyerCopilot.app`。制品检查覆盖受管入口、内置种子摘要、实体 Node 文件及最终二进制的 Electron fuses。真实桌面测试覆盖品牌明暗模式、五种预设、令牌与模型界面、原生及 HTTP 拒绝路径、实际法律插件安装、重启、模型流和压缩 Session 持久化；证据位于 `dist/e2e-source`、`dist/e2e-packaged`。
+macOS ARM64 目录产物为 `dist/mac-arm64/LawyerDesk.app`。制品检查覆盖受管入口、内置种子摘要、实体 Node 文件及最终二进制的 Electron fuses。真实桌面测试覆盖品牌明暗模式、五种预设、令牌与模型界面、原生及 HTTP 拒绝路径、实际法律插件安装、重启、模型流和压缩 Session 持久化；证据位于 `dist/e2e-source`、`dist/e2e-packaged`。
 
 报告中的 `productionModelCall: false` 表明目录与模型 HTTP 为测试服务，不能作为生产联调通过。线上中央目录和用户授权的本站令牌仍需单独验证；测试不会真实提交法院或调解业务。
 
