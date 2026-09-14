@@ -1,0 +1,46 @@
+node_modules/@img/sharp-libvips-darwin-arm64/lib/libvips-cpp.8.18.3.dylib
+SHA256 50090a3a7c8f455de3c6cf2b274d231ddcc92901f4b1957c3b3391b6b9877989
+node_modules/@img/sharp-libvips-darwin-arm64/lib/libvips-cpp.8.18.3.dylib:
+	@rpath/libvips-cpp.8.18.3.dylib (compatibility version 8.18.3, current version 8.18.3)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 3502.1.255)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 3502.1.255)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 2575.60.5)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	/usr/lib/libresolv.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1900.180.0)
+	/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics (compatibility version 64.0.0, current version 1889.5.3)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 1226.0.0)
+	/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText (compatibility version 1.0.0, current version 844.5.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)
+
+node_modules/@img/sharp-darwin-arm64/lib/sharp-darwin-arm64-0.35.3.node
+SHA256 5efbf349396808af22ae4f6b67c327767297a97b54a1ecf04dedec63aeff4d46
+node_modules/@img/sharp-darwin-arm64/lib/sharp-darwin-arm64-0.35.3.node:
+	@rpath/libvips-cpp.8.18.3.dylib (compatibility version 8.18.3, current version 8.18.3)
+	/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1900.180.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)
+
+node_modules/@img/sharp-libvips-darwin-x64/lib/libvips-cpp.8.18.3.dylib
+SHA256 48f6294a40b86fc2edb2d1629ade909efecbf07cc06678b299a79b750594e499
+node_modules/@img/sharp-libvips-darwin-x64/lib/libvips-cpp.8.18.3.dylib:
+	@rpath/libvips-cpp.8.18.3.dylib (compatibility version 8.18.3, current version 8.18.3)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 3502.1.255)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 3502.1.255)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 2575.60.5)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	/usr/lib/libresolv.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1900.180.0)
+	/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics (compatibility version 64.0.0, current version 1889.5.3)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 1226.0.0)
+	/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText (compatibility version 1.0.0, current version 844.5.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)
+
+node_modules/@img/sharp-darwin-x64/lib/sharp-darwin-x64-0.35.3.node
+SHA256 d3e0be8e1019e3418b3a6724bc40e203a5fe52ca0c3fde0aec4c603ae9c3fd2e
+node_modules/@img/sharp-darwin-x64/lib/sharp-darwin-x64-0.35.3.node:
+	@rpath/libvips-cpp.8.18.3.dylib (compatibility version 8.18.3, current version 8.18.3)
+	/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1900.180.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)
+

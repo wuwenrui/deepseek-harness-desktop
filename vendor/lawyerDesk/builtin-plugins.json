@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "plugins": [
+    {
+      "packageName": "@changfenhuang/dsh-genui",
+      "version": "0.10.0-lawyer.1",
+      "archive": "genui.tgz",
+      "upstream": "https://github.com/omdsh-dev/dsh-genui",
+      "fork": "https://github.com/wuwenrui/dsh-genui",
+      "baseCommit": "21ee4f42adc80452ade39fff07d40d646331caa1",
+      "sha256": "9c8dc5082855043d4ee84e752894aacf27568379ef130e763fc7975ec7024b7d",
+      "size": 1793452
+    },
+    {
+      "packageName": "dsh-better-sidebar",
+      "version": "0.19.1-lawyer.1",
+      "archive": "materials.tgz",
+      "upstream": "https://github.com/omdsh-dev/DSH-better-sidebar",
+      "fork": "https://github.com/wuwenrui/DSH-better-sidebar",
+      "baseCommit": "1fcf43ccbedd6e66370b7fb81df2b4dd0ef2604e",
+      "sha256": "3194d567e1426a63a7b8f6391f9736cfb7e8932ff8c80e3ecb564f856d9910ed",
+      "size": 10154
+    }
+  ]
+}

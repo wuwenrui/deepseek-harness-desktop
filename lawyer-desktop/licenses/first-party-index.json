@@ -1,0 +1,17 @@
+[
+  {
+    "name": "@lawyer-dsh/lawyer-brand",
+    "version": "0.1.1",
+    "license": "MIT",
+    "manifestSha256": "fe252a539d698ce7a05068e8a180743c6d4582fd5b288d61769de20269cc0268",
+    "documents": [
+      {
+        "path": "first-party/lawyer-brand-0.1.1-DISTRIBUTION.txt",
+        "sha256": "0b4a1e9bd1243d0bfec7e261fb41e4ee91bf225daa025290e2cb6e15d68f2d4d",
+        "url": "first-party:product-owner/unsigned-macos-arm64-prerelease",
+        "revision": "@lawyer-dsh/lawyer-brand@0.1.1; direct owner authorization in license-completion task"
+      }
+    ],
+    "evidence": "Owned product distribution authorization, not a substituted MIT template. Installed manifest declares MIT and has no private field."
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "node_id": "TA_kwDOBjqWM9oAKDMzMzhiMDNjMTM4YjNlMTMyOGUwYTIwYjY1NDNiOTlhYjQ0MzhkOGY",
+  "sha": "3338b03c138b3e1328e0a20b6543b99ab4438d8f",
+  "url": "https://api.github.com/repos/lovell/sharp-libvips/git/tags/3338b03c138b3e1328e0a20b6543b99ab4438d8f",
+  "tagger": {
+    "name": "Lovell Fuller",
+    "email": "github@lovell.info",
+    "date": "2026-06-30T08:51:12Z"
+  },
+  "object": {
+    "sha": "4da6d14c0d59866adfb9d8cf52bcaa53846dc4f6",
+    "type": "commit",
+    "url": "https://api.github.com/repos/lovell/sharp-libvips/git/commits/4da6d14c0d59866adfb9d8cf52bcaa53846dc4f6"
+  },
+  "tag": "v1.3.2",
+  "message": "Release v1.3.2\n-----BEGIN PGP SIGNATURE-----\n\niHUEABYKAB0WIQQPSr/u9OescCpmN1smwWNYk6y4HwUCakODgwAKCRAmwWNYk6y4\nH6gEAQCxhBR/lCWlTpd0UzF3qDxxceP3yXtYGD+hkoqzZVF/hQD/Q82qHV6mKMsI\n+xAUWpMMgAKnDnUyeQSeUZU+8BKjcAo=\n=W2QT\n-----END PGP SIGNATURE-----\n",
+  "verification": {
+    "verified": true,
+    "reason": "valid",
+    "signature": "-----BEGIN PGP SIGNATURE-----\n\niHUEABYKAB0WIQQPSr/u9OescCpmN1smwWNYk6y4HwUCakODgwAKCRAmwWNYk6y4\nH6gEAQCxhBR/lCWlTpd0UzF3qDxxceP3yXtYGD+hkoqzZVF/hQD/Q82qHV6mKMsI\n+xAUWpMMgAKnDnUyeQSeUZU+8BKjcAo=\n=W2QT\n-----END PGP SIGNATURE-----\n",
+    "payload": "object 4da6d14c0d59866adfb9d8cf52bcaa53846dc4f6\ntype commit\ntag v1.3.2\ntagger Lovell Fuller <github@lovell.info> 1782809472 +0100\n\nRelease v1.3.2\n",
+    "verified_at": "2026-06-30T08:55:42Z"
+  }
+}

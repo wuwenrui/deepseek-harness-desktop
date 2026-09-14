@@ -1,3 +1,9 @@
 * text=auto eol=lf
 patches/*.patch text eol=lf whitespace=-space-before-tab,-blank-at-eol
 .yarn/patches/*.patch text eol=lf whitespace=-space-before-tab,-blank-at-eol
+# SHA-pinned upstream legal evidence must retain original CRLF and whitespace.
+# The license audit validates original bytes; never format these vendor records.
+lawyer-desktop/licenses/libvips/texts/** -text -whitespace
+lawyer-desktop/licenses/libvips/upstream/** -text -whitespace
+lawyer-desktop/licenses/libvips/evidence/** -text -whitespace
+lawyer-desktop/licenses/upstream/** -text -whitespace

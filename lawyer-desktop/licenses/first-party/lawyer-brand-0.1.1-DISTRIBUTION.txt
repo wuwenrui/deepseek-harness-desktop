@@ -1,0 +1,21 @@
+First-party distribution statement — @lawyer-dsh/lawyer-brand@0.1.1
+
+The LawyerDesk product owner has expressly authorized distributing its own
+@lawyer-dsh/lawyer-brand@0.1.1 component as part of the unsigned macOS ARM64
+public LawyerDesk prerelease. This statement records that first-party release
+authorization; it does not purport to reproduce a missing upstream MIT license,
+create a copyright attribution, or grant rights in third-party components.
+
+The reviewed installed package.json SHA-256 is:
+fe252a539d698ce7a05068e8a180743c6d4582fd5b288d61769de20269cc0268
+Its existing declaration is license: "MIT", with no private field. This review
+does not change that declaration, withdraw rights already granted, or claim that
+the declaration alone supplies a missing copyright notice. No generic MIT text
+has been substituted. The owner-authorized first-party distribution path is
+limited to this exact component and release scope, not arbitrary packages,
+UNLICENSED declarations, future versions, or independent redistribution rights.
+
+Authority: direct product-owner instruction in this license-completion task,
+authorizing the unsigned macOS ARM64 public prerelease and an exact first-party
+distribution statement for this owned product package. Dependencies and any
+incorporated third-party material retain their separate terms and review duties.

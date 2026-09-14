@@ -1,0 +1,185 @@
+[
+  {
+    "name": "@aws-sdk/credential-provider-http",
+    "version": "3.972.70",
+    "license": "Apache-2.0",
+    "manifestSha256": "40511d5342f11ea3678e75c8187298ae45c21ce517fff23d0a1717867b098478",
+    "documents": [{"path":"upstream/aws-sdk-credential-provider-http@3.972.70/LICENSE","sha256":"edea91454b811f127fbdea3d86f378f6719bd372ed440abf82b232f6fca06c3d","url":"https://raw.githubusercontent.com/aws/aws-sdk-js-v3/26b0eb790ff86399b7af7b74ce8c188f25512cc6/LICENSE","revision":"26b0eb790ff86399b7af7b74ce8c188f25512cc6"}],
+    "evidence": {
+      "registry": {"path":"upstream/aws-sdk-credential-provider-http@3.972.70/registry.json","sha256":"d4f990dda8d36f3151bedd6530579a9b59905abe84d6d8d9bffb8950abf5e7fb","url":"https://registry.npmjs.org/%40aws-sdk%2Fcredential-provider-http/3.972.70"},
+      "gitHead": null,
+      "installedManifest": "lawyer-desktop/node_modules/@aws-sdk/credential-provider-http/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "releaseTag": {"path":"upstream/aws-sdk-v3.1108.0/tag.json","sha256":"6c9eb580a04a83499033198451a6f6f9a7e13172e53986740e566923ddaa60d9","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/ref/tags/v3.1108.0"},
+      "tagObject": {"path":"upstream/aws-sdk-v3.1108.0/tag-object.json","sha256":"6381095505f654b89ea778c8506721a775b08c01da16753a801d42ced17929e4","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/tags/b187769e33bdccafdedf93d5c4ceca8436cc6cff"},
+      "sourceManifest": {"path":"upstream/aws-sdk-credential-provider-http@3.972.70/source-manifest.json","sha256":"068cbb0a229d89ebd4a92eeb7ebdd561fec9bbd7ef97fd5d2bd77ae51f2d3370","url":"https://raw.githubusercontent.com/aws/aws-sdk-js-v3/26b0eb790ff86399b7af7b74ce8c188f25512cc6/packages-internal/credential-provider-http/package.json"},
+      "sourceTree": {"path":"upstream/aws-aws-sdk-js-v3@26b0eb790ff86399b7af7b74ce8c188f25512cc6/tree.json","sha256":"ea18c66b5b55681efd68b5436b206f0e08aebd9f4acf54f0cbf5d2dab16fe585","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/trees/26b0eb790ff86399b7af7b74ce8c188f25512cc6?recursive=1"},
+      "association": "npm omits gitHead; annotated release tag v3.1108.0 resolves to the document revision, whose source manifest confirms exact name/version/license.",
+      "noticeScope": "No NOTICE at repository root or target runtime package. codegen/NOTICE belongs to the separate codegen tree."
+    }
+  },
+  {
+    "name": "@aws-sdk/credential-provider-login",
+    "version": "3.972.75",
+    "license": "Apache-2.0",
+    "manifestSha256": "abdd707af8b06ee70ca345aa2b440986e7091e3ce08358f8d72dc1ae4caffa4c",
+    "documents": [{"path":"upstream/aws-sdk-credential-provider-login@3.972.75/LICENSE","sha256":"edea91454b811f127fbdea3d86f378f6719bd372ed440abf82b232f6fca06c3d","url":"https://raw.githubusercontent.com/aws/aws-sdk-js-v3/26b0eb790ff86399b7af7b74ce8c188f25512cc6/LICENSE","revision":"26b0eb790ff86399b7af7b74ce8c188f25512cc6"}],
+    "evidence": {
+      "registry": {"path":"upstream/aws-sdk-credential-provider-login@3.972.75/registry.json","sha256":"b21344130deac62f488a255a25e672fa87c5c4a2abab07901fee5cbcdff71620","url":"https://registry.npmjs.org/%40aws-sdk%2Fcredential-provider-login/3.972.75"},
+      "gitHead": null,
+      "installedManifest": "lawyer-desktop/node_modules/@aws-sdk/credential-provider-login/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "releaseTag": {"path":"upstream/aws-sdk-v3.1108.0/tag.json","sha256":"6c9eb580a04a83499033198451a6f6f9a7e13172e53986740e566923ddaa60d9","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/ref/tags/v3.1108.0"},
+      "tagObject": {"path":"upstream/aws-sdk-v3.1108.0/tag-object.json","sha256":"6381095505f654b89ea778c8506721a775b08c01da16753a801d42ced17929e4","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/tags/b187769e33bdccafdedf93d5c4ceca8436cc6cff"},
+      "sourceManifest": {"path":"upstream/aws-sdk-credential-provider-login@3.972.75/source-manifest.json","sha256":"66682b1c5ce5fca619aadf639e24b74be6cfc1a02b203790a0d37ac8e59c1083","url":"https://raw.githubusercontent.com/aws/aws-sdk-js-v3/26b0eb790ff86399b7af7b74ce8c188f25512cc6/packages-internal/credential-provider-login/package.json"},
+      "sourceTree": {"path":"upstream/aws-aws-sdk-js-v3@26b0eb790ff86399b7af7b74ce8c188f25512cc6/tree.json","sha256":"ea18c66b5b55681efd68b5436b206f0e08aebd9f4acf54f0cbf5d2dab16fe585","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/trees/26b0eb790ff86399b7af7b74ce8c188f25512cc6?recursive=1"},
+      "association": "npm omits gitHead; annotated release tag v3.1108.0 resolves to the document revision, whose source manifest confirms exact name/version/license.",
+      "noticeScope": "No NOTICE at repository root or target runtime package. codegen/NOTICE belongs to the separate codegen tree."
+    }
+  },
+  {
+    "name": "@aws-sdk/nested-clients",
+    "version": "3.997.42",
+    "license": "Apache-2.0",
+    "manifestSha256": "82afa578e4a1cb82c09d32baec073d2f83642ba79a6f4fd327fc529cc998e572",
+    "documents": [{"path":"upstream/aws-sdk-nested-clients@3.997.42/LICENSE","sha256":"edea91454b811f127fbdea3d86f378f6719bd372ed440abf82b232f6fca06c3d","url":"https://raw.githubusercontent.com/aws/aws-sdk-js-v3/26b0eb790ff86399b7af7b74ce8c188f25512cc6/LICENSE","revision":"26b0eb790ff86399b7af7b74ce8c188f25512cc6"}],
+    "evidence": {
+      "registry": {"path":"upstream/aws-sdk-nested-clients@3.997.42/registry.json","sha256":"dd985e6658f53636922f86e29ed314f84cb76b58d495a2fd1cbad9e764f63b9c","url":"https://registry.npmjs.org/%40aws-sdk%2Fnested-clients/3.997.42"},
+      "gitHead": null,
+      "installedManifest": "lawyer-desktop/node_modules/@aws-sdk/nested-clients/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "releaseTag": {"path":"upstream/aws-sdk-v3.1108.0/tag.json","sha256":"6c9eb580a04a83499033198451a6f6f9a7e13172e53986740e566923ddaa60d9","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/ref/tags/v3.1108.0"},
+      "tagObject": {"path":"upstream/aws-sdk-v3.1108.0/tag-object.json","sha256":"6381095505f654b89ea778c8506721a775b08c01da16753a801d42ced17929e4","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/tags/b187769e33bdccafdedf93d5c4ceca8436cc6cff"},
+      "sourceManifest": {"path":"upstream/aws-sdk-nested-clients@3.997.42/source-manifest.json","sha256":"870f02be68d3741c185b463d9dbbf59765299b79ed40131acd8a6ffcc2b138dd","url":"https://raw.githubusercontent.com/aws/aws-sdk-js-v3/26b0eb790ff86399b7af7b74ce8c188f25512cc6/packages-internal/nested-clients/package.json"},
+      "sourceTree": {"path":"upstream/aws-aws-sdk-js-v3@26b0eb790ff86399b7af7b74ce8c188f25512cc6/tree.json","sha256":"ea18c66b5b55681efd68b5436b206f0e08aebd9f4acf54f0cbf5d2dab16fe585","url":"https://api.github.com/repos/aws/aws-sdk-js-v3/git/trees/26b0eb790ff86399b7af7b74ce8c188f25512cc6?recursive=1"},
+      "association": "npm omits gitHead; annotated release tag v3.1108.0 resolves to the document revision, whose source manifest confirms exact name/version/license. The registry repository.directory is stale: source now resides under packages-internal/nested-clients.",
+      "noticeScope": "No NOTICE at repository root or target runtime package. codegen/NOTICE belongs to the separate codegen tree."
+    }
+  },
+  {
+    "name": "@earendil-works/pi-ai",
+    "version": "0.85.1",
+    "license": "MIT",
+    "manifestSha256": "b54df5a36d523febdeebfc5682dc4faed101fee10aba913d5f3679582f018da3",
+    "documents": [{"path":"upstream/earendil-works-pi-ai@0.85.1/LICENSE","sha256":"0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48","url":"https://raw.githubusercontent.com/earendil-works/pi/d981de1229ef899957bbe968bc8dcda02a21f477/LICENSE","revision":"d981de1229ef899957bbe968bc8dcda02a21f477"}],
+    "evidence": {
+      "registry": {"path":"upstream/earendil-works-pi-ai@0.85.1/registry.json","sha256":"8cd1b7fe760e93882c61ecdd71dce6ed88dafad11600ba4fde579392a6566641","url":"https://registry.npmjs.org/%40earendil-works%2Fpi-ai/0.85.1"},
+      "gitHead": "d981de1229ef899957bbe968bc8dcda02a21f477",
+      "installedManifest": "lawyer-desktop/node_modules/@earendil-works/pi-ai/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "sourceManifest": {"path":"upstream/earendil-works-pi-ai@0.85.1/source-manifest.json","sha256":"b54df5a36d523febdeebfc5682dc4faed101fee10aba913d5f3679582f018da3","url":"https://raw.githubusercontent.com/earendil-works/pi/d981de1229ef899957bbe968bc8dcda02a21f477/packages/ai/package.json"},
+      "sourceTree": {"path":"upstream/earendil-works-pi@d981de1229ef899957bbe968bc8dcda02a21f477/tree.json","sha256":"0bf55e9bcde6bfe30e1cc5e226c89cd559bc8e686b0e4653ebfaee9516aff213","url":"https://api.github.com/repos/earendil-works/pi/git/trees/d981de1229ef899957bbe968bc8dcda02a21f477?recursive=1"},
+      "noticeScope": "No NOTICE in repository revision; repository LICENSE applies to packages/ai."
+    }
+  },
+  {
+    "name": "@earendil-works/pi-telemetry",
+    "version": "0.85.1",
+    "license": "MIT",
+    "manifestSha256": "ef1fd481ce3c32458a6f4b41cf20dadf99765e9cbd31f44cc5a9ceabe4af8fcf",
+    "documents": [{"path":"upstream/earendil-works-pi-telemetry@0.85.1/LICENSE","sha256":"0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48","url":"https://raw.githubusercontent.com/earendil-works/pi/d981de1229ef899957bbe968bc8dcda02a21f477/LICENSE","revision":"d981de1229ef899957bbe968bc8dcda02a21f477"}],
+    "evidence": {
+      "registry": {"path":"upstream/earendil-works-pi-telemetry@0.85.1/registry.json","sha256":"f3e8ad6d89ace2ef991945f437dcc29c63d34b23c6b105c26b25ac870ef47fc9","url":"https://registry.npmjs.org/%40earendil-works%2Fpi-telemetry/0.85.1"},
+      "gitHead": "d981de1229ef899957bbe968bc8dcda02a21f477",
+      "installedManifest": "lawyer-desktop/node_modules/@earendil-works/pi-telemetry/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "sourceManifest": {"path":"upstream/earendil-works-pi-telemetry@0.85.1/source-manifest.json","sha256":"ef1fd481ce3c32458a6f4b41cf20dadf99765e9cbd31f44cc5a9ceabe4af8fcf","url":"https://raw.githubusercontent.com/earendil-works/pi/d981de1229ef899957bbe968bc8dcda02a21f477/packages/telemetry/package.json"},
+      "sourceTree": {"path":"upstream/earendil-works-pi@d981de1229ef899957bbe968bc8dcda02a21f477/tree.json","sha256":"0bf55e9bcde6bfe30e1cc5e226c89cd559bc8e686b0e4653ebfaee9516aff213","url":"https://api.github.com/repos/earendil-works/pi/git/trees/d981de1229ef899957bbe968bc8dcda02a21f477?recursive=1"},
+      "noticeScope": "No NOTICE in repository revision; repository LICENSE applies to packages/telemetry."
+    }
+  },
+  {
+    "name": "@koromix/koffi-darwin-arm64",
+    "version": "3.1.5",
+    "license": "MIT",
+    "manifestSha256": "c62e0c95754145c35e356e17372d8260efeffd99887cfbbfc512acb9c5c2a0dc",
+    "documents": [
+      {"path":"upstream/koffi@3.1.5/LICENSE.txt","sha256":"22bcbbbacd739b026a8dc484f62a31484ce4c4e31f3408b60b29b4e41d62b290","url":"https://registry.npmjs.org/koffi/-/koffi-3.1.5.tgz#package/LICENSE.txt","revision":"npm:koffi@3.1.5;sha512-XVwwrxg0Ca6IEUQF4YtGIU4XN0LSselFYpYvgfhh8wafCunhEEx5hPr7LZhp5QyeFA/LcRsKHTqncCdjWjWAlg=="},
+      {"path":"upstream/koffi@3.1.5/vendor/node-addon-api/LICENSE.md","sha256":"89024017b88a9f2b763f79b941a4f2db3b4428edfcacdc0b23866b2da633ad0c","url":"https://registry.npmjs.org/koffi/-/koffi-3.1.5.tgz#package/vendor/node-addon-api/LICENSE.md","revision":"npm:koffi@3.1.5;sha512-XVwwrxg0Ca6IEUQF4YtGIU4XN0LSselFYpYvgfhh8wafCunhEEx5hPr7LZhp5QyeFA/LcRsKHTqncCdjWjWAlg=="},
+      {"path":"upstream/koffi@3.1.5/vendor/node-api-headers/LICENSE","sha256":"a553508f516031c91f3af1148d44970cb81bbae6c4f091be6835d39cc252238c","url":"https://registry.npmjs.org/koffi/-/koffi-3.1.5.tgz#package/vendor/node-api-headers/LICENSE","revision":"npm:koffi@3.1.5;sha512-XVwwrxg0Ca6IEUQF4YtGIU4XN0LSselFYpYvgfhh8wafCunhEEx5hPr7LZhp5QyeFA/LcRsKHTqncCdjWjWAlg=="}
+    ],
+    "evidence": {
+      "registry": {"path":"upstream/koromix-koffi-darwin-arm64@3.1.5/registry.json","sha256":"90d6a33d3c98ee2ac539d2b1b8c4d413b244f7169a23671e4f786b969bbf88a1","url":"https://registry.npmjs.org/%40koromix%2Fkoffi-darwin-arm64/3.1.5"},
+      "gitHead": null,
+      "installedManifest": "lawyer-desktop/node_modules/@koromix/koffi-darwin-arm64/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "parentRegistry": {"path":"upstream/koffi@3.1.5/registry.json","sha256":"f5f2d7dc9d5415d1683f4a3e2bddd177e5c7af0c1feb87552b0b949ff16b70ff","url":"https://registry.npmjs.org/koffi/3.1.5"},
+      "parentManifest": {"path":"upstream/koffi@3.1.5/published-manifest.json","sha256":"d775f96fcc02d4417543c0344a5af26ff42284992f81e54400d451d07ec76aa4","url":"https://registry.npmjs.org/koffi/-/koffi-3.1.5.tgz#package/package.json"},
+      "parentTarballIntegrityVerified": true,
+      "association": "koffi@3.1.5 exact optionalDependencies pin this native package. npm metadata has no gitHead and public GitHub mirror has no tags; immutable npm integrity is the release revision, not an inferred git commit.",
+      "noticeScope": "All LICENSE/NOTICE files from exact parent source tarball retained, including native build headers."
+    }
+  },
+  {
+    "name": "@koromix/koffi-darwin-x64",
+    "version": "3.1.5",
+    "license": "MIT",
+    "manifestSha256": "0dfdb5b51e5602867f7118b658c58972358fcb5982d16751d9566a6234061837",
+    "documents": [
+      {"path":"upstream/koffi@3.1.5/LICENSE.txt","sha256":"22bcbbbacd739b026a8dc484f62a31484ce4c4e31f3408b60b29b4e41d62b290","url":"https://registry.npmjs.org/koffi/-/koffi-3.1.5.tgz#package/LICENSE.txt","revision":"npm:koffi@3.1.5;sha512-XVwwrxg0Ca6IEUQF4YtGIU4XN0LSselFYpYvgfhh8wafCunhEEx5hPr7LZhp5QyeFA/LcRsKHTqncCdjWjWAlg=="},
+      {"path":"upstream/koffi@3.1.5/vendor/node-addon-api/LICENSE.md","sha256":"89024017b88a9f2b763f79b941a4f2db3b4428edfcacdc0b23866b2da633ad0c","url":"https://registry.npmjs.org/koffi/-/koffi-3.1.5.tgz#package/vendor/node-addon-api/LICENSE.md","revision":"npm:koffi@3.1.5;sha512-XVwwrxg0Ca6IEUQF4YtGIU4XN0LSselFYpYvgfhh8wafCunhEEx5hPr7LZhp5QyeFA/LcRsKHTqncCdjWjWAlg=="},
+      {"path":"upstream/koffi@3.1.5/vendor/node-api-headers/LICENSE","sha256":"a553508f516031c91f3af1148d44970cb81bbae6c4f091be6835d39cc252238c","url":"https://registry.npmjs.org/koffi/-/koffi-3.1.5.tgz#package/vendor/node-api-headers/LICENSE","revision":"npm:koffi@3.1.5;sha512-XVwwrxg0Ca6IEUQF4YtGIU4XN0LSselFYpYvgfhh8wafCunhEEx5hPr7LZhp5QyeFA/LcRsKHTqncCdjWjWAlg=="}
+    ],
+    "evidence": {
+      "registry": {"path":"upstream/koromix-koffi-darwin-x64@3.1.5/registry.json","sha256":"538e29133a14c9369e0c5aa82f14b1ce70d5cc5f3a9eedfe9972c8e373eecb0f","url":"https://registry.npmjs.org/%40koromix%2Fkoffi-darwin-x64/3.1.5"},
+      "gitHead": null,
+      "installedManifest": "lawyer-desktop/node_modules/@koromix/koffi-darwin-x64/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "parentRegistry": {"path":"upstream/koffi@3.1.5/registry.json","sha256":"f5f2d7dc9d5415d1683f4a3e2bddd177e5c7af0c1feb87552b0b949ff16b70ff","url":"https://registry.npmjs.org/koffi/3.1.5"},
+      "parentManifest": {"path":"upstream/koffi@3.1.5/published-manifest.json","sha256":"d775f96fcc02d4417543c0344a5af26ff42284992f81e54400d451d07ec76aa4","url":"https://registry.npmjs.org/koffi/-/koffi-3.1.5.tgz#package/package.json"},
+      "parentTarballIntegrityVerified": true,
+      "association": "koffi@3.1.5 exact optionalDependencies pin this native package. npm metadata has no gitHead and public GitHub mirror has no tags; immutable npm integrity is the release revision, not an inferred git commit.",
+      "noticeScope": "All LICENSE/NOTICE files from exact parent source tarball retained, including native build headers."
+    }
+  },
+  {
+    "name": "@xterm/headless",
+    "version": "6.0.0",
+    "license": "MIT",
+    "manifestSha256": "6c39530ee759998113bd8bcc306d1b725c0b1d5b0cdc04e071f6945a5f5edf1a",
+    "documents": [{"path":"upstream/xterm-headless@6.0.0/LICENSE","sha256":"b569f629d00f2626a8100df2a1798210535621e42164dfd426a6fe5aac7b0ccd","url":"https://raw.githubusercontent.com/xtermjs/xterm.js/f447274f430fd22513f6adbf9862d19524471c04/LICENSE","revision":"f447274f430fd22513f6adbf9862d19524471c04"}],
+    "evidence": {
+      "registry": {"path":"upstream/xterm-headless@6.0.0/registry.json","sha256":"54ef43808ce64110a42beeb87edd7f28e17cbe9164b0e32f3243e3f5250ae229","url":"https://registry.npmjs.org/%40xterm%2Fheadless/6.0.0"},
+      "gitHead": "f447274f430fd22513f6adbf9862d19524471c04",
+      "installedManifest": "lawyer-desktop/node_modules/@xterm/headless/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "sourceTree": {"path":"upstream/xtermjs-xterm.js@f447274f430fd22513f6adbf9862d19524471c04/tree.json","sha256":"543c124b5182dccc3ba63735515eb331f8f5c325985959d8f5618a91339b1ac0","url":"https://api.github.com/repos/xtermjs/xterm.js/git/trees/f447274f430fd22513f6adbf9862d19524471c04?recursive=1"},
+      "noticeScope": "No NOTICE in repository revision; repository LICENSE applies to headless package."
+    }
+  },
+  {
+    "name": "standardwebhooks",
+    "version": "1.1.1",
+    "license": "MIT",
+    "manifestSha256": "686397f0f0202e0b693cfd3f6241d7a8da3df326f9642867a484fbbd295690b6",
+    "documents": [{"path":"upstream/standardwebhooks@1.1.1/LICENSE","sha256":"5ec8c7b26b64d881a6706617bed25c049f97f2f35de034c756de8546fd6dbe27","url":"https://raw.githubusercontent.com/standard-webhooks/standard-webhooks/b4d2c14fc5b4ccff3ff271e3b087dff812254c59/libraries/LICENSE","revision":"b4d2c14fc5b4ccff3ff271e3b087dff812254c59"}],
+    "evidence": {
+      "registry": {"path":"upstream/standardwebhooks@1.1.1/registry.json","sha256":"99d04c194edcd30c91b31b8a10e983bed938f27d1becbf45af4a9eb3e84cc27c","url":"https://registry.npmjs.org/standardwebhooks/1.1.1"},
+      "gitHead": "b4d2c14fc5b4ccff3ff271e3b087dff812254c59",
+      "installedManifest": "lawyer-desktop/node_modules/standardwebhooks/package.json",
+      "publishedManifestMatchesInstalled": true,
+      "tarballIntegrityVerified": true,
+      "tarballShasumVerified": true,
+      "sourceManifest": {"path":"upstream/standardwebhooks@1.1.1/source-manifest.json","sha256":"686397f0f0202e0b693cfd3f6241d7a8da3df326f9642867a484fbbd295690b6","url":"https://raw.githubusercontent.com/standard-webhooks/standard-webhooks/b4d2c14fc5b4ccff3ff271e3b087dff812254c59/libraries/javascript/package.json"},
+      "sourceTree": {"path":"upstream/standard-webhooks-standard-webhooks@b4d2c14fc5b4ccff3ff271e3b087dff812254c59/tree.json","sha256":"88c50dce8faadc44a3d13c840c8caaaebd1663cea7ddd77f3dafd94f2843a49f","url":"https://api.github.com/repos/standard-webhooks/standard-webhooks/git/trees/b4d2c14fc5b4ccff3ff271e3b087dff812254c59?recursive=1"},
+      "association": "The npm JavaScript package lives at libraries/javascript. Its nearest ancestor libraries/LICENSE is MIT (Svix), not the repository-root Apache-2.0 license.",
+      "noticeScope": "No NOTICE in repository revision; most specific applicable parent LICENSE retained."
+    }
+  }
+]

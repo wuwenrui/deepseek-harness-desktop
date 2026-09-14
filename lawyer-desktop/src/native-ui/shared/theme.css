@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter/wght.css";
+
+@theme inline {
+  --font-sans: "Inter Variable", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --background: #f6f1e6;
+  --foreground: #1d2530;
+  --card: #fcf9f2;
+  --card-foreground: #1d2530;
+  --popover: #fcf9f2;
+  --popover-foreground: #1d2530;
+  --primary: #a63a2a;
+  --primary-foreground: #f6f1e6;
+  --secondary: #eee6d7;
+  --secondary-foreground: #26436e;
+  --muted: #eee6d7;
+  --muted-foreground: #52627a;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e2d6c4;
+  --input: #cbbba5;
+  --ring: #a63a2a;
+  --radius: 0.625rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  --background: #1d2530;
+  --foreground: #f6f1e6;
+  --card: #252f3c;
+  --card-foreground: #f6f1e6;
+  --popover: #252f3c;
+  --popover-foreground: #f6f1e6;
+  --primary: #db8d78;
+  --primary-foreground: #1d2530;
+  --secondary: #2d3948;
+  --secondary-foreground: #d0d9e4;
+  --muted: #2d3948;
+  --muted-foreground: #bdc7d4;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: #3a4758;
+  --input: #59697c;
+  --ring: #db8d78;
+  }
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html, body, #root { width: 100%; height: 100%; }
+  #root { isolation: isolate; }
+  html.dshDesktopDialogDocument,
+  html.dshDesktopDialogDocument body,
+  html.dshDesktopDialogDocument #root { height: auto; min-height: 0; }
+  body { @apply bg-background text-foreground font-sans; margin: 0; min-width: 320px; overflow: hidden; }
+  .base-ui-disable-scrollbar,
+  [data-slot="scroll-area-viewport"] { scrollbar-width: none; }
+  .base-ui-disable-scrollbar::-webkit-scrollbar,
+  [data-slot="scroll-area-viewport"]::-webkit-scrollbar { display: none; width: 0; height: 0; }
+}
+
+.dshNativeFrame {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 36px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklch, var(--background) 92%, transparent);
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+.dshNativeFrame[data-platform="darwin"] { padding: 0 8px 0 88px; }
+.dshNativeFrame[data-platform="win32"] { padding: 0 146px 0 8px; }
+.dshNativeContent {
+  box-sizing: border-box;
+  padding-top: calc(var(--spacing) * 5);
+}
+.dshNativeFrame ~ .dshNativeContent { padding-top: calc(36px + var(--spacing) * 5); }
+button, a, input, textarea, select { -webkit-app-region: no-drag; }

@@ -1,0 +1,3 @@
+# Reviewed source inputs are release assets, not Git blobs. Hashes/URLs remain tracked.
+/libvips/sources/
+/release/
