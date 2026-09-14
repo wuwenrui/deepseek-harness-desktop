@@ -9692,8 +9692,8 @@ __metadata:
   linkType: hard
 
 "@lawyer-dsh/market@file:../vendor/lawyerDesk/market.tgz::locator=lawyer-dsh-desktop%40workspace%3Alawyer-desktop":
-  version: 1.46.1-lawyer.1
-  resolution: "@lawyer-dsh/market@file:../vendor/lawyerDesk/market.tgz#../vendor/lawyerDesk/market.tgz::hash=bb1203&locator=lawyer-dsh-desktop%40workspace%3Alawyer-desktop"
+  version: 1.46.1-lawyer.2
+  resolution: "@lawyer-dsh/market@file:../vendor/lawyerDesk/market.tgz#../vendor/lawyerDesk/market.tgz::hash=0eb7a4&locator=lawyer-dsh-desktop%40workspace%3Alawyer-desktop"
   dependencies:
     js-yaml: "npm:4.3.1"
     tar: "npm:7.5.22"
@@ -9707,7 +9707,7 @@ __metadata:
       optional: true
     "@deepseek-ai/schemastery":
       optional: true
-  checksum: 10c0/fc88f8bb6909e26f56345cbbb060f2d5e42fc2c39338d090fa3eaa78559d30ea58c5540d4192ddcdd7421d1edba0f3497c8684b7e0c4b5b8d323b35b10dd6b06
+  checksum: 10c0/fbe0033c5d585050f111a315f73af774f3d82828417ed911d31cd44b8c47ba78f810abd8b897e60a8796b164680f87f4ced3bb5794e050ee64c446ce3291bf0e
   languageName: node
   linkType: hard
 
