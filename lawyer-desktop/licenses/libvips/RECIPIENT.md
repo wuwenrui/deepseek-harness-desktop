@@ -1,10 +1,10 @@
-# LawyerDesk beta.2: LGPL component sources and recipient replacement
+# LawyerDesk beta.3: LGPL component sources and recipient replacement
 
 ## Obtain the independent component sources
 
 The application uses libvips 8.18.3 and its associated libraries. The FreeType portions are based in part on the work of the FreeType Team. Full original notices and LGPLv3/GPLv3 terms are provided with the application and source materials.
 
-Download **LawyerDesk-license-source-materials.tar.gz**, at no additional charge, from the same [LawyerDesk 0.1.0-beta.2 release](https://github.com/wuwenrui/deepseek-harness-desktop/releases/tag/lawyerdesk-v0.1.0-beta.2) as the application. Check the release's SHA256SUMS.txt before extraction.
+Download **LawyerDesk-license-source-materials.tar.gz**, at no additional charge, from the same [LawyerDesk 0.1.0-beta.3 release](https://github.com/wuwenrui/deepseek-harness-desktop/releases/tag/lawyerdesk-v0.1.0-beta.3) as the application. Check the release's SHA256SUMS.txt before extraction.
 
 **Uncombined source form:** individual libraries are supplied separately under `licenses/libvips/sources/`, rather than only as the combined dylib. `licenses/libvips/source-inputs.json` and `sources.json` locate each exact component archive and the four patches. The pinned recipe-source archive and readable `upstream/recipes/posix.sh` contain the actual configure options, inline edits and combination commands. Apply those component-specific changes when reconstructing the corresponding work; an untouched upstream archive alone is not the whole build description. LGPL components remain available under their original LGPL grants. The released librsvg lock and its registry/workspace source closure are included; this is not a claim of reproducing the upstream binary's final Cargo lock or bit-identical build.
 

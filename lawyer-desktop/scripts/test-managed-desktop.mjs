@@ -1,30 +1,35 @@
 #!/usr/bin/env node
 /** Real Electron and real packaged/source DSH; only external model/catalog HTTP is a fixture. */
 import assert from 'node:assert/strict'
+import { prepareBillingInstallation, inspectNativeCarrier } from './billing-test-installation.mjs'
 import { createRequire } from 'node:module'
 import { createServer } from 'node:http'
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from 'node:fs'
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, readdirSync, rmSync } from 'node:fs'
 import { join, dirname, resolve } from 'node:path'
 import { tmpdir } from 'node:os'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { zstdDecompressSync } from 'node:zlib'
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..')
+const packaged=process.argv.includes('--packaged')
+const out=join(root,'dist',packaged?'e2e-packaged':'e2e-source');mkdirSync(out,{recursive:true});rmSync(join(out,'report.json'),{force:true})
 const productRootIndex=process.argv.indexOf('--product-root')
 const workspace=productRootIndex>=0?resolve(process.argv[productRootIndex+1]):resolve(root,'../..')
 const { _electron: electron }=await import(pathToFileURL(join(workspace,'dsh-market/node_modules/playwright/index.mjs')))
 const { scanZstdFrames }=await import(pathToFileURL(join(workspace,'deepseek-harness/packages/session/session-persistence-jsonl/lib/types/zstd.js')))
 const require=createRequire(root+'/package.json')
-const packaged=process.argv.includes('--packaged')
 const executable=packaged?join(root,'dist/mac-arm64/LawyerDesk.app/Contents/MacOS/LawyerDesk'):require('electron')
 const home=mkdtempSync(join(tmpdir(),'lawyer-native-e2e-'))
-const out=join(root,'dist',packaged?'e2e-packaged':'e2e-source');mkdirSync(out,{recursive:true})
 const material=join(home,'workspace');mkdirSync(material);writeFileSync(join(material,'测试合同.txt'),'服务合同：甲方委托乙方提供服务，约定分期支付费用。仅为桌面端集成验收材料。\n')
-const central=join(workspace,'lawyer-harness/dist/central-market')
+function option(name) { const i=process.argv.indexOf(name); return i<0?undefined:process.argv[i+1] }
+const testTrust=option('--test-trust'),dependencyStore=option('--dependency-store')
+assert.ok(dependencyStore,'Pass --dependency-store with prepared public dependency cache')
+assert.ok(testTrust&&option('--catalog-dir'),'Pass explicit --catalog-dir and --test-trust; production trust is never replaced for tests')
+const central=resolve(option('--catalog-dir')??join(workspace,'lawyer-harness/dist/central-market'))
 let modelCalls=0
 const modelRequests=[]
-const traffic=[]
-const server=createServer(async(req,res)=>{
+const traffic=[],fixtureErrors=[]
+const server=createServer(async(req,res)=>{try{
  traffic.push(req.url)
  if(req.url==='/lawyer-market/catalog.json'){res.setHeader('content-type','application/json');res.end(readFileSync(join(central,'catalog.json')));return}
  const match=/^\/lawyer-market\/artifacts\/([a-f0-9]{64}\.tgz)$/.exec(req.url??'')
@@ -41,28 +46,28 @@ const server=createServer(async(req,res)=>{
   res.end('data: [DONE]\n\n');return
  }
  res.writeHead(404);res.end()
-})
+}catch(error){fixtureErrors.push(String(error));if(!res.headersSent)res.writeHead(500);res.end('fixture assertion failed')}})
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const fixture=`http://127.0.0.1:${server.address().port}`
+let installation,report,nativeCarrier
+async function prepare(){installation=await prepareBillingInstallation({root,scratch:home,packaged,testTrust:resolve(testTrust),require,dependencyStore:resolve(dependencyStore),origin:fixture,bootstrap:(entry,appPath)=>`import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);${appPath?`require('electron').app.setAppPath(${JSON.stringify(appPath)});`:''}
+await import(${JSON.stringify(entry)});`})}
 let instance,page,logs='',port
 const errors=[]
 async function launch(){
  logs=''
- instance=await electron.launch({executablePath:executable,args:packaged?[]:[root+'/lib/main.js'],env:{...process.env,LAWYER_DESKTOP_HOME:home,ELECTRON_RUN_AS_NODE:''},timeout:90000})
+ const env={...process.env,LAWYER_DESKTOP_HOME:home,ELECTRON_RUN_AS_NODE:'',NODE_OPTIONS:'',NODE_PATH:''}
+ for(const key of ['NEW_API_KEY','DEEPSEEK_API_KEY','OPENAI_API_KEY','DEEPSEEK_BASE_URL'])delete env[key]
+ instance=await electron.launch({executablePath:installation?.executablePath??executable,args:installation?.args??(packaged?[]:[root+'/lib/main.js']),env,timeout:90000})
  for(const stream of [instance.process().stdout,instance.process().stderr])stream?.on('data',b=>{logs=(logs+b.toString().replace(/token=\S+/g,'token=[redacted]')).slice(-20000)})
 
  const deadline=Date.now()+90000
- while(Date.now()<deadline){page=instance.windows().find(p=>p.url().startsWith('http://127.0.0.1:'));if(page)break;await new Promise(r=>setTimeout(r,200))}
- assert.ok(page,'desktop did not create its real WebContentsView')
+ while(Date.now()<deadline){if(instance.process().exitCode!=null||instance.process().signalCode!=null)throw new Error('native startup exited: '+logs);page=instance.windows().find(p=>p.url().startsWith('http://127.0.0.1:'));if(page&&logs.includes('"event":"lawyer-desktop-ready"'))break;await new Promise(r=>setTimeout(r,200))}
+ assert.ok(page&&logs.includes('"event":"lawyer-desktop-ready"'),'desktop did not complete real healthy startup: '+logs)
  page.on('pageerror',e=>errors.push(e.message))
  await page.getByRole('button',{name:'设置',exact:true}).waitFor({timeout:30000})
- await instance.evaluate((_electron,fixture)=>{
-  const original=globalThis.fetch
-  globalThis.fetch=(input,init)=>{
-   const source=new URL(input instanceof Request?input.url:String(input))
-   if(source.origin==='https://model.codingrui.work'){const url=new URL(source.pathname+source.search,fixture);return original(input instanceof Request?new Request(url,input):url,init)}
-   return original(input,init)
-  }
- },fixture)
+ await page.waitForFunction(()=>document.readyState==='complete'&&Boolean(window.__DSH_BOOT__))
+ nativeCarrier=await inspectNativeCarrier(instance,{packaged,executablePath:installation.executablePath,scratch:home})
  port=new URL(page.url()).port
  await page.waitForFunction(()=>Array.from(document.querySelectorAll('[role=img]')).some(el=>el.getAttribute('aria-label')==='律衡印章'))
 }
@@ -85,6 +90,7 @@ async function screenshot(name){
 
 async function palette(){return page.getByRole('button',{name:'设置',exact:true}).evaluate(el=>({base:getComputedStyle(el).getPropertyValue('--dsw-alias-bg-base').trim(),brand:getComputedStyle(el).getPropertyValue('--dsw-alias-brand-primary').trim()}))}
 try{
+ await prepare()
  await launch()
  const isolation=await instance.evaluate(()=>{const {webContents}=process.getBuiltinModule('module').createRequire(process.execPath)('electron');return webContents.getAllWebContents().filter(w=>w.getURL().startsWith('http://127.0.0.1:')).map(w=>{const p=w.getLastWebPreferences();return{nodeIntegration:p.nodeIntegration,contextIsolation:p.contextIsolation,sandbox:p.sandbox}})})
  assert.ok(isolation.length>0);for(const p of isolation)assert.deepEqual(p,{nodeIntegration:false,contextIsolation:true,sandbox:true})
@@ -165,7 +171,12 @@ try{
  const sessionDir=join(home,'sessions');const files=readdirSync(sessionDir,{recursive:true}).filter(name=>String(name).endsWith('.jsonl.zstd'));assert.ok(files.length>0)
  const text=files.map(file=>{const b=readFileSync(join(sessionDir,String(file)));return scanZstdFrames(b).frames.map(({start,end})=>zstdDecompressSync(b.subarray(start,end)).toString()).join('')}).join('\n')
  assert.ok(text.split('\n').filter(Boolean).map(JSON.parse).some(e=>e.type==='assistant/message'&&JSON.stringify(e.data).includes('桌面端已通过本站模型通路验收。')))
- assert.deepEqual(errors,[])
- const report={ok:true,packaged,executable,home,modes,brand:{light:'#f7f7f8',primary:'#a63a2a',dark:'#101113',darkPrimary:'#c4695a'},nativeIsolation:isolation,nativeTerminalBlocked:true,ordinaryBrowserDenied:true,realPluginInstall:['lawyer-filing@0.3.1','lawyer-mediation@0.1.0'],agentTeam:{enabled:true,leadTools:['spawn_teammate','send_message','list_agents','wait_agent','team_task_create','team_task_list'].filter(name=>(modelRequests.find(request=>request.conv)?.names??[]).includes(name)),panelOpened:true,upgradeMigrated:true},modelCalls,durableSessions:files.length,pageErrors:errors,remoteServices:'test HTTP fixtures only',productionModelCall:false}
- writeFileSync(join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2))
-}catch(error){writeFileSync(join(out,'failure.log'),String(error.stack??error)+'\n'+logs);if(page){await page.screenshot({path:join(out,'failure.png')}).catch(()=>{});writeFileSync(join(out,'failure-page.txt'),await page.locator('body').innerText().catch(()=>''))}console.error(error);console.error('Test evidence: '+out);process.exitCode=1}finally{await close();server.closeAllConnections();await new Promise(r=>server.close(r))}
+ assert.deepEqual(errors,[]);assert.deepEqual(fixtureErrors,[])
+ report={ok:true,packaged,executable:installation?.executablePath??executable,disposableCopy:Boolean(installation),testTrust,central,home,nativeCarrier,modes,brand:{light:'#f7f7f8',primary:'#a63a2a',dark:'#101113',darkPrimary:'#c4695a'},nativeIsolation:isolation,nativeTerminalBlocked:true,ordinaryBrowserDenied:true,realPluginInstall:['lawyer-filing@0.3.1','lawyer-mediation@0.1.0'],agentTeam:{enabled:true,leadTools:['spawn_teammate','send_message','list_agents','wait_agent','team_task_create','team_task_list'].filter(name=>(modelRequests.find(request=>request.conv)?.names??[]).includes(name)),panelOpened:true,upgradeMigrated:true},modelCalls,durableSessions:files.length,pageErrors:errors,remoteServices:'test HTTP fixtures only',productionModelCall:false}
+
+}catch(error){writeFileSync(join(out,'failure.log'),String(error.stack??error)+'\n'+logs);if(page){await page.screenshot({path:join(out,'failure.png')}).catch(()=>{});writeFileSync(join(out,'failure-page.txt'),await page.locator('body').innerText().catch(()=>''))}console.error(error);console.error('Test evidence: '+out);process.exitCode=1}finally{
+ const settled=await Promise.allSettled([close(),(async()=>{server.closeAllConnections();await new Promise(r=>server.close(r))})()])
+ try{installation?.assertOriginalUnchanged();installation?.assertNoExternalAttempts();for(const result of settled)if(result.status==='rejected')throw result.reason}
+ catch(error){process.exitCode=1;writeFileSync(join(out,'failure.log'),String(error.stack??error));console.error(error)}
+}
+if(report&&!process.exitCode){report.originalAppAndTrustUnchanged=true;report.guardedExternalTransportAttempts=0;report.networkBoundary='Application fetch/http/socket, managed Electron-Node children and renderer sessions; not an OS-wide packet capture';writeFileSync(join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2))}

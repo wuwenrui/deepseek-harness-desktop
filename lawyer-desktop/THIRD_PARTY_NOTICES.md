@@ -4765,7 +4765,7 @@ Declared license: UNLICENSED (first-party private component; see DISTRIBUTION_LI
 No third-party license asserted for this first-party component.
 
 
-### @lawyer-dsh/market@1.46.1-lawyer.1
+### @lawyer-dsh/market@1.46.1-lawyer.2
 
 Declared license: MIT
 

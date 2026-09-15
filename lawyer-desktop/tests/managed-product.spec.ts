@@ -44,6 +44,19 @@ describe('managed Desktop identity and profile admission', () => {
     expect(bundles(path)).toEqual([...PRODUCT_BUNDLES, '@community/fixture-plugin'])
     expect(() => validateManagedProfile(path)).not.toThrow()
   })
+  it('keeps signed-market billing optional and preserves it during a product upgrade', () => {
+    const billing = '@lawyer-dsh/lawyer-billing'
+    expect(PRODUCT_BUNDLES).not.toContain(billing)
+    const path = profile(data => {
+      data.dependencies[billing] = 'file:billing.tgz'
+      data.dsh.profile.bundles = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', '@lawyer-dsh/lawyer-platform', '@lawyer-dsh/lawyer-brand', '@lawyer-dsh/market', billing]
+    })
+    writeFileSync(join(path, '.lawyer-installations.json'), JSON.stringify([{ id: 'lawyer-billing', packageName: billing, version: '0.1.0', source: 'official', sha256: 'fixture', installedAt: '2026-09-14T00:00:00Z' }]))
+    syncProductBundles(path)
+    expect(bundles(path)).toEqual([...PRODUCT_BUNDLES, billing])
+    expect(validateManagedProfile(path)).toContain(billing)
+    expect(JSON.parse(readFileSync(join(path, 'package.json'), 'utf8')).dependencies[billing]).toBe('file:billing.tgz')
+  })
   it('leaves an already composed profile untouched', () => {
     const path = profile(data => { data.dsh.profile.bundles = [...PRODUCT_BUNDLES, '@community/fixture-plugin'] })
     const before = readFileSync(join(path, 'package.json'), 'utf8')
